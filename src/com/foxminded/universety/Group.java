@@ -1,17 +1,33 @@
 package com.foxminded.universety;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Group {
 
-    private List<Student> groupNumber;
+    private int number;
+    private ArrayList<Student> group;
 
     public Group() {
-        this.groupNumber = new ArrayList<>();
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public ArrayList<Student> getGroup() {
+        return group;
+    }
+
+    public Group(int number) {
+        this.number = number;
+        this.group = new ArrayList<>();
     }
 
     public void addStudent(Student student) {
-        this.groupNumber.add(student);
+        group.add(student);
     }
 }

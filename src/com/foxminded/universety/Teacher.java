@@ -4,6 +4,12 @@ public class Teacher {
     private String firstName;
     private String secondName;
 
+    public Teacher(String firstName, String secondName) {
+        super();
+        this.firstName = firstName;
+        this.secondName = secondName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
