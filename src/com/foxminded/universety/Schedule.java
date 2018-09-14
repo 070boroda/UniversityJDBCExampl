@@ -1,42 +1,37 @@
 package com.foxminded.universety;
 
-import java.awt.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Schedule {
 
-    private Subject subject;
-    private String startTime;
-    private Group groupNumber;
-    private Teacher teacher;
-    private LectureHall lectureHall;
+    private List<Field> day;
+    private String dayName;
 
-    public Schedule(Subject subject, String startTime, Group groupNumber, Teacher teacher, LectureHall lectureHall) {
-        super();
-        this.subject = subject;
-        this.startTime = startTime;
-        this.groupNumber = groupNumber;
-        this.teacher = teacher;
-        this.lectureHall = lectureHall;
+    public Schedule(String dayName) {
+        this.dayName = dayName;
+        this.day = new ArrayList<>();
     }
 
-    public Subject getSubject() {
-        return subject;
+    public List<Field> getDay() {
+        return day;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getDayName() {
+        return dayName;
     }
 
-    public Group getGroupNumber() {
-        return groupNumber;
+    public void addSchedule(Field schedule) {
+        day.add(schedule);
     }
-
-    public Teacher getTeacher() {
-        return teacher;
+    
+    public static void printSchedule(Schedule day){
+    	System.out.println("Schedule " + day.getDayName() + " for group number " + day.getDay().get(0).getGroupNumber().getNumber());
+    	for(int i = 0;i < day.getDay().size(); i++){
+            System.out.println("Subject: " + day.getDay().get(i).getSubject() + " begin at: "
+                    + day.getDay().get(i).getStartTime() + " Lecture Hall is " + day.getDay().get(i).getLectureHall().getNumber()
+                    + " with teacher " + day.getDay().get(i).getTeacher().getFirstName() 
+                    + " " + day.getDay().get(i).getTeacher().getSecondName());
+       }
     }
-
-    public LectureHall getLectureHall() {
-        return lectureHall;
-    }
-
 }

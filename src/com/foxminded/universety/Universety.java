@@ -1,8 +1,8 @@
 package com.foxminded.universety;
 
-public class Runnable {
+public class Universety {
 
-    public void run() {
+    public void createUniverseti() {
         Group group1 = new Group(0001);
         Group group2 = new Group(0002);
 
@@ -29,15 +29,14 @@ public class Runnable {
         LectureHall lectureHall3 = new LectureHall(203);
         LectureHall lectureHall4 = new LectureHall(204);
 
-        Schedule oneMonday = new Schedule(subject1, "nine oclock", group1, teacher1, lectureHall1);
-        Schedule twoMonday = new Schedule(subject3, "nine forty five", group1, teacher3, lectureHall3);
+        Field oneMonday = new Field(subject1, (float) 9.00 , group1, teacher1, lectureHall1);
+        Field twoMonday = new Field(subject3, (float) 10.00, group1, teacher3, lectureHall3);
 
-        Day monday = new Day("monday");
+        Schedule monday = new Schedule("monday");
+        Schedule tuesday = new Schedule("tuesday");
         monday.addSchedule(oneMonday);
         monday.addSchedule(twoMonday);
-
-        System.out.println(monday.getDayName() + " " + monday.getDay().get(0).getSubject() + " "
-                + monday.getDay().get(0).getStartTime());
+        
+        Schedule.printSchedule(monday);
     }
-
 }

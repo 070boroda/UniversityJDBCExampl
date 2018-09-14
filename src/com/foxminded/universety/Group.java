@@ -7,9 +7,6 @@ public class Group {
     private int number;
     private ArrayList<Student> group;
 
-    public Group() {
-    }
-
     public int getNumber() {
         return number;
     }
@@ -30,4 +27,6 @@ public class Group {
     public void addStudent(Student student) {
         group.add(student);
     }
+    
+    
 }
