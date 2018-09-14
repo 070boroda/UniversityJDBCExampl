@@ -22,7 +22,7 @@ public class Runnable {
         Subject subject2 = new Subject("English");
         Subject subject3 = new Subject("Programming");
         Subject subject4 = new Subject("Geometric");
-        Subject subject5 = new Subject("Geografi");
+        Subject subject5 = new Subject("Geografic");
 
         LectureHall lectureHall1 = new LectureHall(201);
         LectureHall lectureHall2 = new LectureHall(202);
@@ -36,6 +36,8 @@ public class Runnable {
         monday.addSchedule(oneMonday);
         monday.addSchedule(twoMonday);
 
-        System.out.println(monday.getDay().get(0).getSubject() + " " + monday.getDay().get(0).getStartTime());
+        System.out.println(monday.getDayName() + " " + monday.getDay().get(0).getSubject() + " "
+                + monday.getDay().get(0).getStartTime());
     }
+
 }
