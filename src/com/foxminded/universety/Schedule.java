@@ -7,6 +7,7 @@ public class Schedule {
 
     private List<Field> day;
     private String dayName;
+   
 
     public Schedule(String dayName) {
         this.dayName = dayName;
@@ -25,13 +26,17 @@ public class Schedule {
         day.add(schedule);
     }
     
+    public void addScheduleMonth(Schedule field) {
+        day.addAll(field.getDay());
+    }
+      
     public static void printSchedule(Schedule day){
     	System.out.println("Schedule " + day.getDayName() + " for group number " + day.getDay().get(0).getGroupNumber().getNumber());
     	for(int i = 0;i < day.getDay().size(); i++){
             System.out.println("Subject: " + day.getDay().get(i).getSubject() + " begin at: "
-                    + day.getDay().get(i).getStartTime() + " Lecture Hall is " + day.getDay().get(i).getLectureHall().getNumber()
+                    +  day.getDay().get(i).getStartTime() + " Lecture Hall is " + day.getDay().get(i).getLectureHall().getNumber()
                     + " with teacher " + day.getDay().get(i).getTeacher().getFirstName() 
                     + " " + day.getDay().get(i).getTeacher().getSecondName());
        }
-    }
+    }   
 }

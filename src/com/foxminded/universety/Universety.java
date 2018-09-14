@@ -36,6 +36,13 @@ public class Universety {
         Schedule tuesday = new Schedule("tuesday");
         monday.addSchedule(oneMonday);
         monday.addSchedule(twoMonday);
+        tuesday.addSchedule(twoMonday);
+        tuesday.addSchedule(oneMonday);
+        
+        Schedule june = new Schedule("June");
+        
+        june.addScheduleMonth(monday);
+        june.addScheduleMonth(tuesday);
         
         Schedule.printSchedule(monday);
     }
