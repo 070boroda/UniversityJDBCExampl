@@ -5,14 +5,14 @@ import java.awt.List;
 public class Field {
 
     private Subject subject;
-    private float startTime;
+    private int startHour;
     private Group groupNumber;
     private Teacher teacher;
     private LectureHall lectureHall;
     
-    public Field(Subject subject, float startTime, Group groupNumber, Teacher teacher, LectureHall lectureHall){
+    public Field(Subject subject, int startHour, Group groupNumber, Teacher teacher, LectureHall lectureHall){
     	this.subject = subject;
-        this.startTime = startTime;
+        this.startHour = startHour;
         this.groupNumber = groupNumber;
         this.teacher = teacher;
         this.lectureHall = lectureHall; 
@@ -23,7 +23,7 @@ public class Field {
     }
 
     public float getStartTime() {
-        return startTime;
+        return startHour;
     }
 
     public Group getGroupNumber() {
@@ -38,4 +38,9 @@ public class Field {
         return lectureHall;
     
     }
+
+	public void setStartTime(int startTime) {
+		this.startHour = startTime;
+	}
+    
 }
