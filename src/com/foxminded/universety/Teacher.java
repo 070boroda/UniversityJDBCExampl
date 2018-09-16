@@ -28,7 +28,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return firstName + secondName;
+        return firstName + " " + secondName;
     }
 
 }

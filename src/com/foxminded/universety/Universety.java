@@ -3,8 +3,8 @@ package com.foxminded.universety;
 public class Universety {
 
     public void createUniverseti() {
-        Group group1 = new Group(0001);
-        Group group2 = new Group(0002);
+        Group group1 = new Group("0001");
+        Group group2 = new Group("0002");
 
         group1.addStudent(new Student("Vladimir", "Putin"));
         group1.addStudent(new Student("Sashka", "Lukash"));
@@ -29,22 +29,21 @@ public class Universety {
         LectureHall lectureHall3 = new LectureHall(203);
         LectureHall lectureHall4 = new LectureHall(204);
 
-        Field oneMonday = new Field(subject1,  9 , group1, teacher1, lectureHall1);
-        Field twoMonday = new Field(subject3, 10, group1, teacher3, lectureHall3);
+        Field oneMonday = new Field(subject1, "9", "00", group1, teacher1, lectureHall1);
+        Field twoMonday = new Field(subject3, "10", "00", group1, teacher3, lectureHall3);
 
-        Schedule monday = new Schedule("monday");
-        Schedule tuesday = new Schedule("tuesday");
+        Schedule monday = new Schedule();
+        Schedule tuesday = new Schedule();
+
+        monday.setDayName("Monday", oneMonday.getGroupNumber().toString());
         monday.addSchedule(oneMonday);
         monday.addSchedule(twoMonday);
+
+        tuesday.setDayName("Tuesday", oneMonday.getGroupNumber().toString());
         tuesday.addSchedule(twoMonday);
         tuesday.addSchedule(oneMonday);
-        
-        
-        Schedule june = new Schedule("June");
-        
-        june.addScheduleMonth(monday);
-        june.addScheduleMonth(tuesday);
-        
-        Schedule.printSchedule(monday);
+
+        System.out.print(monday.getSchedule());
+        System.out.print(tuesday.getSchedule());
     }
 }

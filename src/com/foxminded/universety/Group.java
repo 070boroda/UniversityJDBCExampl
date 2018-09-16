@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Group {
 
-    private int number;
+    private String number;
     private ArrayList<Student> group;
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -19,7 +19,7 @@ public class Group {
         return group;
     }
 
-    public Group(int number) {
+    public Group(String number) {
         this.number = number;
         this.group = new ArrayList<>();
     }
@@ -27,6 +27,10 @@ public class Group {
     public void addStudent(Student student) {
         group.add(student);
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return number;
+    }
+
 }
