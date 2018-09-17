@@ -1,27 +1,13 @@
 package com.foxminded.universety;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Schedule {
 
-    private String name;
-    StringBuilder schedule = new StringBuilder();
+    Map<DayOfWeek, Map<NUMBER_LESSON, List<Field>>> schedule = new TreeMap<>();
 
-    public String getDayName() {
-        return name;
-    }
-
-    public void setDayName(String dayName, String numberGroup) {
-        this.name = dayName;
-        String nameDay = String.format("%S", name);
-        schedule.append("Schedule " + name + " for group number ");
-        String number = String.format("%s", numberGroup);
-        schedule.append(number).append("\n" + "\n");
-    }
-
-    public StringBuilder getSchedule() {
-        return schedule;
-    }
-
-    public void addSchedule(Field field) {
+    /*public void addSchedule(Field field) {
 
         String subject = String.format("%S", field.getSubject());
         schedule.append("Subject " + subject);
@@ -30,7 +16,7 @@ public class Schedule {
         String lectureHall = String.format("%S", field.getLectureHall());
         schedule.append(" lecture hall is: " + lectureHall);
         String teacher = String.format("%S", field.getTeacher());
-        schedule.append(" teacher: " + teacher + "\n");
+        schedule.append(" teacher: " + teacher + "\n");*/
 
         /*
          * System.out.println("Schedule " + day.getDayName() + " for group number " +
