@@ -1,4 +1,6 @@
-package com.foxminded.universety;
+package com.foxminded.main;
+
+import com.foxminded.universety.Universety;
 
 public class Main {
 
