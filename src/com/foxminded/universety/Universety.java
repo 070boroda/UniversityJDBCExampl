@@ -1,5 +1,7 @@
 package com.foxminded.universety;
 
+import java.util.Map;
+
 public class Universety {
 
     public void createUniverseti() {
@@ -12,38 +14,43 @@ public class Universety {
         group2.addStudent(new Student("Angelka", "Merkel"));
         group2.addStudent(new Student("Donald", "Tramp"));
 
-        Teacher teacher1 = new Teacher("Capitan", "America");
-        Teacher teacher2 = new Teacher("Spider", "Man");
-        Teacher teacher3 = new Teacher("Iron", "Man");
-        Teacher teacher4 = new Teacher("Haw", "Key");
-        Teacher teacher5 = new Teacher("Aqua", "Man");
+        Teacher teacherAmerica = new Teacher("Capitan", "America");
+        Teacher teacherSpider = new Teacher("Spider", "Man");
+        Teacher teacherIron = new Teacher("Iron", "Man");
+        Teacher teacherHaw = new Teacher("Haw", "Key");
+        Teacher teacherAqua = new Teacher("Aqua", "Man");
 
-        Subject subject1 = new Subject("Mathematic");
-        Subject subject2 = new Subject("English");
-        Subject subject3 = new Subject("Programming");
-        Subject subject4 = new Subject("Geometric");
-        Subject subject5 = new Subject("Geografic");
+        Subject subjectMathematic = new Subject("Mathematic");
+        Subject subjectEnglish = new Subject("English");
+        Subject subjectProgramming = new Subject("Programming");
+        Subject subjectGeometrik = new Subject("Geometric");
+        Subject subjectGeografic = new Subject("Geografic");
 
-        LectureHall lectureHall1 = new LectureHall(201);
-        LectureHall lectureHall2 = new LectureHall(202);
-        LectureHall lectureHall3 = new LectureHall(203);
-        LectureHall lectureHall4 = new LectureHall(204);
+        LectureHall lectureHall201 = new LectureHall(201);
+        LectureHall lectureHall202 = new LectureHall(202);
+        LectureHall lectureHall203 = new LectureHall(203);
+        LectureHall lectureHall204 = new LectureHall(204);
 
-        Field oneMonday = new Field(subject1, "9", "00", group1, teacher1, lectureHall1);
-        Field twoMonday = new Field(subject3, "10", "00", group1, teacher3, lectureHall3);
+        Field mondayFild = new Field();
+        mondayFild.addFields(new Field(subjectEnglish, group1, teacherAmerica, lectureHall201));
+        mondayFild.addFields(new Field(subjectGeografic, group1, teacherAqua, lectureHall202));
+        mondayFild.addFields(new Field(subjectEnglish, group1, teacherSpider, lectureHall203));
+        mondayFild.addFields(new Field(subjectMathematic, group1, teacherSpider, lectureHall204));
 
-        Schedule monday = new Schedule();
-        Schedule tuesday = new Schedule();
+        Field tuesdayFild = new Field();
+        tuesdayFild.addFields(new Field(subjectProgramming, group1, teacherHaw, lectureHall204));
+        tuesdayFild.addFields(new Field(subjectGeometrik, group1, teacherHaw, lectureHall202));
+        tuesdayFild.addFields(new Field(subjectMathematic, group1, teacherIron, lectureHall201));
 
-        monday.setDayName("Monday", oneMonday.getGroupNumber().toString());
-        monday.addSchedule(oneMonday);
-        monday.addSchedule(twoMonday);
+        Schedule mondayShcedule = new Schedule();
+        mondayShcedule.createSchedule(DayOfWeek.MONDAY, mondayFild.getFields());
+        // mondayShcedule.createSchedule(DayOfWeek.WEDNESDAY, tuesdayFild.getFields());
 
-        tuesday.setDayName("Tuesday", oneMonday.getGroupNumber().toString());
-        tuesday.addSchedule(twoMonday);
-        tuesday.addSchedule(oneMonday);
+        System.out.println(mondayShcedule.getSchedule().keySet().toString());
 
-        System.out.print(monday.getSchedule());
-        System.out.print(tuesday.getSchedule());
+        for (Map.Entry<NUMBER_LESSON, Field> item : mondayShcedule.getSchedule().get(DayOfWeek.MONDAY).entrySet()) {
+            System.out.printf("[ %s ] - %s  \n", item.getKey(), item.getValue());
+
+        }
     }
 }

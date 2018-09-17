@@ -1,32 +1,35 @@
 package com.foxminded.universety;
 
-import java.awt.List;
+import java.util.ArrayList;
 
 public class Field {
 
     private Subject subject;
-    private String startHour;
-    private String startMinut;
     private Group groupNumber;
     private Teacher teacher;
     private LectureHall lectureHall;
+    private ArrayList<Field> fields = new ArrayList<>();
 
-    public Field(Subject subject, String startHour, String startMinut, Group groupNumber, Teacher teacher,
-            LectureHall lectureHall) {
-        this.startMinut = startMinut;
+    public Field() {
+    }
+
+    public Field(Subject subject, Group groupNumber, Teacher teacher, LectureHall lectureHall) {
         this.subject = subject;
-        this.startHour = startHour;
         this.groupNumber = groupNumber;
         this.teacher = teacher;
         this.lectureHall = lectureHall;
     }
 
-    public Subject getSubject() {
-        return subject;
+    protected void addFields(Field field) {
+        this.fields.add(field);
     }
 
-    public String getStartHour() {
-        return startHour;
+    protected ArrayList getFields() {
+        return fields;
+    }
+
+    public Subject getSubject() {
+        return subject;
     }
 
     public Group getGroupNumber() {
@@ -42,12 +45,9 @@ public class Field {
 
     }
 
-    public void setStartTime(String startTime) {
-        this.startHour = startTime;
-    }
-
-    public String getStartMinut() {
-        return startMinut;
+    @Override
+    public String toString() {
+        return " " + subject + " " + groupNumber + " " + teacher + " " + lectureHall + "";
     }
 
 }
