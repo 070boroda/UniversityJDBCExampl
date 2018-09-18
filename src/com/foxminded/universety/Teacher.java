@@ -30,5 +30,4 @@ public class Teacher {
     public String toString() {
         return firstName + " " + secondName;
     }
-
 }

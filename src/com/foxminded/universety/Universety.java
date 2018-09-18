@@ -1,7 +1,5 @@
 package com.foxminded.universety;
 
-import java.util.Map;
-
 public class Universety {
 
     public void createUniverseti() {
@@ -48,6 +46,5 @@ public class Universety {
 
         Schedule.printDay(DayOfWeek.MONDAY, shcedule);
         Schedule.printDay(DayOfWeek.WEDNESDAY, shcedule);
-
     }
 }

@@ -3,7 +3,6 @@ package com.foxminded.universety;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 
 public class Schedule {
 

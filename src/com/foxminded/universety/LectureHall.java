@@ -19,5 +19,4 @@ public class LectureHall {
     public String toString() {
         return "" + number + "";
     }
-
 }

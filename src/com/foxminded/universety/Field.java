@@ -50,5 +50,4 @@ public class Field {
         return " " + subject + " group: " + groupNumber + " teacher: " + teacher + " in lecture hall " + lectureHall
                 + "";
     }
-
 }
