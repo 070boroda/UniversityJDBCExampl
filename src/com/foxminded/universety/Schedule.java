@@ -7,21 +7,28 @@ import java.util.Map.Entry;
 
 public class Schedule {
 
-    private Map<DayOfWeek, Map<NUMBER_LESSON, Field>> schedule = new TreeMap<>();
+    private Map<DayOfWeek, Map<NumberLesson, Field>> schedule = new TreeMap<>();
 
     protected void createSchedule(DayOfWeek day, ArrayList<Field> filds) {
-        Map<NUMBER_LESSON, Field> temp = new TreeMap<>();
+        Map<NumberLesson, Field> temp = new TreeMap<>();
         int i = 0;
-        for (NUMBER_LESSON number : NUMBER_LESSON.values()) {
+        for (NumberLesson number : NumberLesson.values()) {
             if ((i < filds.size()))
                 temp.put(number, filds.get(i));
             i++;
         }
-
         schedule.put(day, temp);
     }
 
-    protected Map<DayOfWeek, Map<NUMBER_LESSON, Field>> getSchedule() {
+    protected Map<DayOfWeek, Map<NumberLesson, Field>> getSchedule() {
         return schedule;
+    }
+
+    protected static void printDay(DayOfWeek day, Schedule schedule) {
+        System.out.printf("Classes of %S \n", day);
+
+        for (Map.Entry<NumberLesson, Field> item : schedule.getSchedule().get(day).entrySet()) {
+            System.out.printf("[ %s ] - %s  \n", item.getKey().getDescription(), item.getValue());
+        }
     }
 }

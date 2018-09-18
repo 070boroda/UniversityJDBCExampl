@@ -47,7 +47,8 @@ public class Field {
 
     @Override
     public String toString() {
-        return " " + subject + " " + groupNumber + " " + teacher + " " + lectureHall + "";
+        return " " + subject + " group: " + groupNumber + " teacher: " + teacher + " in lecture hall " + lectureHall
+                + "";
     }
 
 }

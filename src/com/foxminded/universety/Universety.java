@@ -42,15 +42,12 @@ public class Universety {
         tuesdayFild.addFields(new Field(subjectGeometrik, group1, teacherHaw, lectureHall202));
         tuesdayFild.addFields(new Field(subjectMathematic, group1, teacherIron, lectureHall201));
 
-        Schedule mondayShcedule = new Schedule();
-        mondayShcedule.createSchedule(DayOfWeek.MONDAY, mondayFild.getFields());
-        // mondayShcedule.createSchedule(DayOfWeek.WEDNESDAY, tuesdayFild.getFields());
+        Schedule shcedule = new Schedule();
+        shcedule.createSchedule(DayOfWeek.MONDAY, mondayFild.getFields());
+        shcedule.createSchedule(DayOfWeek.WEDNESDAY, tuesdayFild.getFields());
 
-        System.out.println(mondayShcedule.getSchedule().keySet().toString());
+        Schedule.printDay(DayOfWeek.MONDAY, shcedule);
+        Schedule.printDay(DayOfWeek.WEDNESDAY, shcedule);
 
-        for (Map.Entry<NUMBER_LESSON, Field> item : mondayShcedule.getSchedule().get(DayOfWeek.MONDAY).entrySet()) {
-            System.out.printf("[ %s ] - %s  \n", item.getKey().getDescription(), item.getValue());
-
-        }
     }
 }
