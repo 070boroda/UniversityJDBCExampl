@@ -49,7 +49,7 @@ public class Universety {
         System.out.println(mondayShcedule.getSchedule().keySet().toString());
 
         for (Map.Entry<NUMBER_LESSON, Field> item : mondayShcedule.getSchedule().get(DayOfWeek.MONDAY).entrySet()) {
-            System.out.printf("[ %s ] - %s  \n", item.getKey(), item.getValue());
+            System.out.printf("[ %s ] - %s  \n", item.getKey().getDescription(), item.getValue());
 
         }
     }

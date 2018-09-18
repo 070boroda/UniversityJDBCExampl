@@ -11,6 +11,12 @@ public class Schedule {
 
     protected void createSchedule(DayOfWeek day, ArrayList<Field> filds) {
         Map<NUMBER_LESSON, Field> temp = new TreeMap<>();
+        int i = 0;
+        for (NUMBER_LESSON number : NUMBER_LESSON.values()) {
+            if ((i < filds.size()))
+                temp.put(number, filds.get(i));
+            i++;
+        }
 
         schedule.put(day, temp);
     }
