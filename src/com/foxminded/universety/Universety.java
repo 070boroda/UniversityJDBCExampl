@@ -44,7 +44,11 @@ public class Universety {
         shcedule.createSchedule(DayOfWeek.MONDAY, mondayFild.getFields());
         shcedule.createSchedule(DayOfWeek.WEDNESDAY, tuesdayFild.getFields());
 
-        Schedule.printDay(DayOfWeek.MONDAY, shcedule);
-        Schedule.printDay(DayOfWeek.WEDNESDAY, shcedule);
+        /*
+         * Schedule.printDay(DayOfWeek.MONDAY, shcedule);
+         * Schedule.printDay(DayOfWeek.WEDNESDAY, shcedule);
+         */
+
+        System.out.println(shcedule.getFieldTeacher(teacherSpider, DayOfWeek.MONDAY).toString());
     }
 }

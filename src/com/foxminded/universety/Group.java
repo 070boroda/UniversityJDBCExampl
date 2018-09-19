@@ -1,11 +1,12 @@
 package com.foxminded.universety;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Group {
 
     private String number;
-    private ArrayList<Student> group;
+    private List<Student> students;
 
     public String getNumber() {
         return number;
@@ -15,17 +16,17 @@ public class Group {
         this.number = number;
     }
 
-    public ArrayList<Student> getGroup() {
-        return group;
+    public List<Student> getGroup() {
+        return students;
     }
 
     public Group(String number) {
         this.number = number;
-        this.group = new ArrayList<>();
+        this.students = new ArrayList<>();
     }
 
     public void addStudent(Student student) {
-        group.add(student);
+        students.add(student);
     }
 
     @Override

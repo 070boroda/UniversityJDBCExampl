@@ -12,12 +12,7 @@ public class ScheduleTest {
     }
 
     @Test
-    public void testSetDayName() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testAddSchedule() {
+    public void testCreateSchedule() {
         fail("Not yet implemented");
     }
 
