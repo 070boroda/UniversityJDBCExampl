@@ -6,6 +6,8 @@ public class Universety {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
 
+        Student studTest = new Student("Vaska", "Petka");
+        group1.addStudent(studTest);
         group1.addStudent(new Student("Vladimir", "Putin"));
         group1.addStudent(new Student("Sashka", "Lukash"));
         group2.addStudent(new Student("Dimka", "Medvedev"));
@@ -13,9 +15,10 @@ public class Universety {
         group2.addStudent(new Student("Donald", "Tramp"));
 
         Teacher teacherAmerica = new Teacher("Capitan", "America");
+
         Teacher teacherSpider = new Teacher("Spider", "Man");
         Teacher teacherIron = new Teacher("Iron", "Man");
-        Teacher teacherHaw = new Teacher("Haw", "Key");
+        Teacher teacherHawk = new Teacher("Hawk", "Key");
         Teacher teacherAqua = new Teacher("Aqua", "Man");
 
         Subject subjectMathematic = new Subject("Mathematic");
@@ -38,12 +41,23 @@ public class Universety {
                 new Field(subjectGeometrik, group2, teacherAqua, lectureHall204));
         schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.ONE,
                 new Field(subjectMathematic, group2, teacherAqua, lectureHall203));
+        schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.THREE,
+                new Field(subjectMathematic, group1, teacherHawk, lectureHall204));
+        schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.FIVE,
+                new Field(subjectProgramming, group2, teacherIron, lectureHall202));
+
         schedule.createSchedule(DayOfWeek.TUESDAY, NumberLesson.FOUR,
                 new Field(subjectProgramming, group2, teacherAmerica, lectureHall204));
+        schedule.createSchedule(DayOfWeek.TUESDAY, NumberLesson.THREE,
+                new Field(subjectEnglish, group2, teacherSpider, lectureHall204));
 
-        schedule.getFieldTeacher(teacherAqua, DayOfWeek.MONDAY);
-        schedule.getFieldTeacher(teacherAmerica, DayOfWeek.MONDAY);
-        schedule.getFieldTeacher(teacherAmerica, DayOfWeek.TUESDAY);
+        /*
+         * schedule.getFieldTeacher(teacherAqua, DayOfWeek.MONDAY);
+         * schedule.getFieldTeacher(teacherAmerica, DayOfWeek.MONDAY);
+         * schedule.getFieldTeacher(teacherAmerica, DayOfWeek.TUESDAY);
+         */
+
+        schedule.getFieldStudents(studTest, DayOfWeek.MONDAY);
 
     }
 }

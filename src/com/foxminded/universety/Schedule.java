@@ -45,14 +45,17 @@ public class Schedule {
     protected void getFieldStudents(Student student, DayOfWeek day) {
         System.out.printf("Classes of %S \n", day);
         for (NumberLesson number : NumberLesson.values()) {
-            if (schedule.get(day).containsKey(number))
-                for (Field field : schedule.get(day).get(number)) {
-                    for (Student stud : field.getGroupNumber().getStudents()) {
-                        if (student.equals(stud))
+            if (schedule.get(day).containsKey(number)) {
+                List<Field> temp = schedule.get(day).get(number);
+                for (Field field : temp) {
+                    for (Student studTemp : field.getGroupNumber().getStudents())
+                        if (student.equals(studTemp)) {
                             System.out.printf("%s", number.getDescription());
-                        System.out.printf("%S \n", field);
-                    }
+                            System.out.printf("%S \n", field);
+                        }
+
                 }
+            }
         }
     }
 }

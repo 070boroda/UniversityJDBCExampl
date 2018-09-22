@@ -16,7 +16,7 @@ public class Group {
         this.students = new ArrayList<>();
     }
 
-    public void addStudent(Student student) {
+    protected void addStudent(Student student) {
         students.add(student);
     }
 
