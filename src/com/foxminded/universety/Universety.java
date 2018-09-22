@@ -29,24 +29,21 @@ public class Universety {
         LectureHall lectureHall203 = new LectureHall(203);
         LectureHall lectureHall204 = new LectureHall(204);
 
-        Field mondayFild = new Field();
-        mondayFild.addFields(new Field(subjectEnglish, group1, teacherAmerica, lectureHall201));
-        mondayFild.addFields(new Field(subjectGeografic, group1, teacherAqua, lectureHall202));
-        mondayFild.addFields(new Field(subjectEnglish, group1, teacherSpider, lectureHall203));
-        mondayFild.addFields(new Field(subjectMathematic, group1, teacherSpider, lectureHall204));
+        Schedule schedule = new Schedule();
+        schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.ONE,
+                new Field(subjectEnglish, group1, teacherAmerica, lectureHall201));
+        schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.TWO,
+                new Field(subjectGeografic, group1, teacherAqua, lectureHall202));
+        schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.THREE,
+                new Field(subjectGeometrik, group2, teacherAqua, lectureHall204));
+        schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.ONE,
+                new Field(subjectMathematic, group2, teacherAqua, lectureHall203));
+        schedule.createSchedule(DayOfWeek.TUESDAY, NumberLesson.FOUR,
+                new Field(subjectProgramming, group2, teacherAmerica, lectureHall204));
 
-        Field tuesdayFild = new Field();
-        tuesdayFild.addFields(new Field(subjectProgramming, group1, teacherHaw, lectureHall204));
-        tuesdayFild.addFields(new Field(subjectGeometrik, group1, teacherHaw, lectureHall202));
-        tuesdayFild.addFields(new Field(subjectMathematic, group1, teacherIron, lectureHall201));
+        schedule.getFieldTeacher(teacherAqua, DayOfWeek.MONDAY);
+        schedule.getFieldTeacher(teacherAmerica, DayOfWeek.MONDAY);
+        schedule.getFieldTeacher(teacherAmerica, DayOfWeek.TUESDAY);
 
-        Schedule shcedule = new Schedule();
-        shcedule.createSchedule(DayOfWeek.MONDAY, mondayFild.getFields());
-        shcedule.createSchedule(DayOfWeek.WEDNESDAY, tuesdayFild.getFields());
-
-        Schedule.printDay(DayOfWeek.MONDAY, shcedule);
-        Schedule.printDay(DayOfWeek.WEDNESDAY, shcedule);
-
-        System.out.println(shcedule.getFieldTeacher(teacherSpider, DayOfWeek.MONDAY).toString());
     }
 }

@@ -3,22 +3,13 @@ package com.foxminded.universety;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class Group {
 
     private String number;
     private List<Student> students;
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public List<Student> getGroup() {
-        return students;
-    }
 
     public Group(String number) {
         this.number = number;

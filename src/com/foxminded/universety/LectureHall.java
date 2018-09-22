@@ -9,7 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-
+@ToString(includeFieldNames = false)
 @AllArgsConstructor
 public class LectureHall {
 
