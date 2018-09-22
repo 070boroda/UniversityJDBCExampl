@@ -15,7 +15,6 @@ public class Universety {
         group2.addStudent(new Student("Donald", "Tramp"));
 
         Teacher teacherAmerica = new Teacher("Capitan", "America");
-
         Teacher teacherSpider = new Teacher("Spider", "Man");
         Teacher teacherIron = new Teacher("Iron", "Man");
         Teacher teacherHawk = new Teacher("Hawk", "Key");
@@ -51,11 +50,9 @@ public class Universety {
         schedule.createSchedule(DayOfWeek.TUESDAY, NumberLesson.THREE,
                 new Field(subjectEnglish, group2, teacherSpider, lectureHall204));
 
-        /*
-         * schedule.getFieldTeacher(teacherAqua, DayOfWeek.MONDAY);
-         * schedule.getFieldTeacher(teacherAmerica, DayOfWeek.MONDAY);
-         * schedule.getFieldTeacher(teacherAmerica, DayOfWeek.TUESDAY);
-         */
+        schedule.getFieldTeacher(teacherAqua, DayOfWeek.MONDAY);
+        schedule.getFieldTeacher(teacherAmerica, DayOfWeek.MONDAY);
+        schedule.getFieldTeacher(teacherAmerica, DayOfWeek.TUESDAY);
 
         schedule.getFieldStudents(studTest, DayOfWeek.MONDAY);
 
