@@ -19,11 +19,6 @@ public class Field {
     private Teacher teacher;
     @NonNull
     private LectureHall lectureHall;
-    private List<Field> fields = new ArrayList<>();
-
-    protected void addFields(Field field) {
-        this.fields.add(field);
-    }
 
     @Override
     public String toString() {

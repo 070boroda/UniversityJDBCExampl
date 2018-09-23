@@ -9,11 +9,10 @@ import lombok.Data;
 public class Group {
 
     private String number;
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public Group(String number) {
         this.number = number;
-        this.students = new ArrayList<>();
     }
 
     protected void addStudent(Student student) {

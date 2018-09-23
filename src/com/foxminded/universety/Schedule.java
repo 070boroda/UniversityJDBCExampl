@@ -7,14 +7,14 @@ import java.util.TreeMap;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-@Getter(value = AccessLevel.PROTECTED)
+@Getter
 public class Schedule {
 
     private Map<DayOfWeek, Map<NumberLesson, List<Field>>> schedule = new TreeMap<>();
 
     protected void createSchedule(DayOfWeek day, NumberLesson number, Field field) {
         if (!schedule.containsKey(day)) {
-            schedule.put(day, new TreeMap<NumberLesson, List<Field>>());
+            schedule.put(day, new TreeMap<>());
             List<Field> temp = new ArrayList<>();
             temp.add(field);
             schedule.get(day).put(number, temp);
