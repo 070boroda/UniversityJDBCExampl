@@ -1,8 +1,8 @@
 package com.foxminded.universety;
 
-public class Universety {
+public class University {
 
-    public void createUniverseti() {
+    public void createUniversity() {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
 

@@ -1,12 +1,12 @@
 package com.foxminded.main;
 
-import com.foxminded.universety.Universety;
+import com.foxminded.universety.University;
 
 public class Main {
 
     public static void main(String[] args) {
-        Universety run = new Universety();
-        run.createUniverseti();
+        University run = new University();
+        run.createUniversity();
     }
 
 }
