@@ -9,7 +9,6 @@ public class Main {
         /*
          * University run = new University(); run.createUniversity();
          */
-
         BaseConnection connection = new BaseConnection();
         connection.connection();
     }

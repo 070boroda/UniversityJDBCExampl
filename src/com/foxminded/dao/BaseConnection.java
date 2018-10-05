@@ -13,7 +13,6 @@ public class BaseConnection {
     public static String PASW = "root";
 
     public void connection() {
-
         Connection connection = null;
         Statement statmen = null;
         try {
