@@ -25,8 +25,7 @@ public class PostgresStudentDao implements DaoStudent {
     public Student getById(int id) {
         Student studtemp = new Student();
         String sql = "SELECT * FROM students WHERE id =?;";
-        try {
-            PreparedStatement statment = connection.prepareStatement(sql);
+        try (PreparedStatement statment = connection.prepareStatement(sql)) {
             statment.setInt(1, id);
             ResultSet result = statment.executeQuery();
             result.next();
