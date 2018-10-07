@@ -1,13 +1,8 @@
 package com.foxminded.universety.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
@@ -39,7 +34,7 @@ public class PostgresStudentDaoTest {
         studentTest.setId(1);
         studentTest.setFirstName("putin");
         studentTest.setSecondName("alex");
-        assertEquals(dbstudent, studentdao);
+        assertEquals(dbstudent, studentTest);
 
     }
 
