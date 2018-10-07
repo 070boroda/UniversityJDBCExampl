@@ -29,6 +29,7 @@ public class PostgresStudentDao implements DaoStudent {
             statment.setInt(1, id);
             ResultSet result = statment.executeQuery();
             result.next();
+            studtemp.setId(result.getInt(id));
             studtemp.setFirstName(result.getString("first_name"));
             studtemp.setSecondName(result.getString("last_name"));
 
