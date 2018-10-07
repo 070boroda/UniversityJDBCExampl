@@ -1,12 +1,19 @@
 package com.foxminded.universety;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Student {
+
+    private int id;
+    @NonNull
     private String firstName;
+    @NonNull
     private String secondName;
 
     @Override
