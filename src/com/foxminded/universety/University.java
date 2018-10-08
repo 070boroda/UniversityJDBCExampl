@@ -1,8 +1,5 @@
 package com.foxminded.universety;
 
-import java.sql.SQLException;
-import com.foxminded.dao.DaoFactory;
-import com.foxminded.dao.postgres.PostgresDaoFactory;
 import com.foxminded.dao.postgres.PostgresStudentDao;
 
 public class University {
@@ -10,17 +7,6 @@ public class University {
     public void createUniversity() {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
-        /*
-         * DaoFactory factory = new PostgresDaoFactory();
-         * 
-         * try { PostgresStudentDao studentdao = new
-         * PostgresStudentDao(factory.getConnection()); Student test = new Student();
-         * test = studentdao.getById(1); System.out.println(test.getFirstName() +
-         * test.getSecondName()); } catch (SQLException e) { // TODO Auto-generated
-         * catch block e.printStackTrace(); } finally { try {
-         * factory.getConnection().close(); } catch (SQLException e) { // TODO
-         * Auto-generated catch block e.printStackTrace(); } }
-         */
 
         group1.addStudent(new Student("Vladimir", "Putin"));
         group1.addStudent(new Student("Sashka", "Lukash"));

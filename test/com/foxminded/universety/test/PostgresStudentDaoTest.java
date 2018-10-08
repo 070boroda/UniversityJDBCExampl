@@ -2,32 +2,15 @@ package com.foxminded.universety.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Connection;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import com.foxminded.dao.postgres.PostgresDaoFactory;
 import com.foxminded.dao.postgres.PostgresStudentDao;
 import com.foxminded.universety.Student;
 
 public class PostgresStudentDaoTest {
 
-    Connection connection;
-
-    @Before
-    public void before() throws Exception {
-
-        PostgresDaoFactory factory = new PostgresDaoFactory();
-        connection = factory.getConnection();
-        factory.getGroupDao(connection);
-
-    }
-
     @Test
     public void testGetById() {
-        PostgresStudentDao studentdao = new PostgresStudentDao(connection);
+        PostgresStudentDao studentdao = new PostgresStudentDao();
         Student dbstudent = new Student();
         dbstudent = studentdao.getById(1);
         Student studentTest = new Student();
@@ -36,11 +19,6 @@ public class PostgresStudentDaoTest {
         studentTest.setSecondName("alex");
         assertEquals(dbstudent, studentTest);
 
-    }
-
-    @After
-    public void after() throws Exception {
-        connection.close();
     }
 
 }

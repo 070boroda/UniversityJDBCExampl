@@ -5,27 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import com.foxminded.dao.DaoStudent;
+import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.Student;
 
-public class PostgresStudentDao implements DaoStudent {
-    private final Connection connection;
-
-    public PostgresStudentDao(Connection connection) {
-        this.connection = connection;
-    }
+public class PostgresStudentDao extends AbstractDao<Integer, Student> {
+    private static final String SQL_GET_BY_ID = "SELECT * FROM students WHERE id =?;";
+    private DaoFactoryConnection factoryconnect = new DaoFactoryConnection();;
 
     @Override
-    public Student create() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Student getById(int id) {
+    public Student getById(Integer id) {
+        Connection connection = null;
+        PreparedStatement statment = null;
         Student studtemp = new Student();
-        String sql = "SELECT * FROM students WHERE id =?;";
-        try (PreparedStatement statment = connection.prepareStatement(sql)) {
+
+        try {
+            connection = factoryconnect.getConnection();
+            statment = connection.prepareStatement(SQL_GET_BY_ID);
             statment.setInt(1, id);
             ResultSet result = statment.executeQuery();
             result.next();
@@ -36,26 +31,44 @@ public class PostgresStudentDao implements DaoStudent {
         } catch (SQLException e) {
             System.err.println("student getbyid error");
             e.printStackTrace();
+        } finally {
+            if (statment != null)
+                try {
+                    statment.close();
+                } catch (SQLException e) {
+                    System.err.println("Statment don't close");
+                    e.printStackTrace();
+                }
+            if (connection != null) {
+                factoryconnect.closeConnection(connection);
+            }
+
         }
         return studtemp;
     }
 
     @Override
-    public void update(Student student) {
+    public boolean create(Student entity) {
         // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
-    public void delete(Student student) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public List<Student> getAll() throws SQLException {
+    public List<Student> getAll() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public boolean delete(Student entity) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean update(Student entity) {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }

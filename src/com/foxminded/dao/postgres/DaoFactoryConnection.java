@@ -6,10 +6,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import com.foxminded.dao.ConnectionFactory;
 
-import com.foxminded.dao.DaoFactory;
-
-public class PostgresDaoFactory implements DaoFactory {
+public class DaoFactoryConnection implements ConnectionFactory {
 
     FileInputStream fis;
     Properties property = new Properties();
@@ -32,33 +31,13 @@ public class PostgresDaoFactory implements DaoFactory {
     }
 
     @Override
-    public PostgresGroupDao getGroupDao(Connection connection) {
-        // TODO Auto-generated method stub
-        return null;
+    public void closeConnection(Connection connection) {
+        if (connection != null)
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.err.println("Connection don't close");
+                e.printStackTrace();
+            }
     }
-
-    @Override
-    public PostgresStudentDao getStudentDao(Connection connection) {
-        // TODO Auto-generated method stub
-        return new PostgresStudentDao(connection);
-    }
-
-    @Override
-    public PostgresLectureHallDao getHallDao(Connection connection) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public PostgresSubjectDao getSubjectDao(Connection connection) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public PostgresTeacherDao getTeacherDao(Connection connection) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }
