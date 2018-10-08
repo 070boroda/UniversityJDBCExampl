@@ -1,7 +1,5 @@
 package com.foxminded.universety;
 
-import com.foxminded.dao.postgres.PostgresStudentDao;
-
 public class University {
 
     public void createUniversity() {
