@@ -1,16 +1,22 @@
 package com.foxminded.universety;
 
+import com.foxminded.dao.postgres.PostgresStudentDao;
+
 public class University {
 
     public void createUniversity() {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
 
+        PostgresStudentDao studentDao = new PostgresStudentDao();
+        Student test = new Student("Prospect", "Valdimir");
         group1.addStudent(new Student("Vladimir", "Putin"));
         group1.addStudent(new Student("Sashka", "Lukash"));
         group2.addStudent(new Student("Dimka", "Medvedev"));
         group2.addStudent(new Student("Angelka", "Merkel"));
         group2.addStudent(new Student("Donald", "Tramp"));
+
+        studentDao.create(test);
 
         Teacher teacherAmerica = new Teacher("Capitan", "America");
         Teacher teacherSpider = new Teacher("Spider", "Man");

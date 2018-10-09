@@ -9,7 +9,8 @@ import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.Student;
 
 public class PostgresStudentDao extends AbstractDao<Integer, Student> {
-    private static final String SQL_GET_BY_ID = "SELECT * FROM students WHERE id =?;";
+    private static final String SQL_GET_BY_ID = "SELECT * FROM students WHERE id = ?;";
+    private static final String SQL_CREATE = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,?,?);";
     private DaoFactoryConnection factoryconnect = new DaoFactoryConnection();;
 
     @Override
@@ -48,9 +49,34 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
     }
 
     @Override
-    public boolean create(Student entity) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean create(Student student) {
+        Connection connection = null;
+        PreparedStatement statment = null;
+
+        try {
+            connection = factoryconnect.getConnection();
+            statment = connection.prepareStatement(SQL_CREATE);
+            statment.setString(1, student.getFirstName());
+            statment.setString(2, student.getSecondName());
+            statment.execute();
+        } catch (SQLException e) {
+            System.err.println("Connection false");
+            e.printStackTrace();
+        } finally {
+            if (statment != null)
+                try {
+                    statment.close();
+                } catch (SQLException e) {
+                    System.err.println("statment don't close");
+                    e.printStackTrace();
+                }
+            if (connection != null) {
+                factoryconnect.closeConnection(connection);
+            }
+
+        }
+
+        return true;
     }
 
     @Override
