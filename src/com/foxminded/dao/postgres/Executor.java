@@ -4,17 +4,41 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
-import com.foxminded.dao.ConnectionFactory;
 
-public class DaoFactoryConnection implements ConnectionFactory {
+import com.foxminded.dao.ResultHandler;
 
-    FileInputStream fis;
-    Properties property = new Properties();
+public class Executor<T> {
 
-    @Override
-    public Connection getConnection() {
+    private final Connection connection;
+
+    public Executor() {
+        this.connection = getConnection();
+        System.out.println("Open connection");
+    }
+
+    public void execUpdate(String update) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.execute(update);
+        stmt.close();
+        closeConnection(connection);
+    }
+
+    public <T> T execQuery(String query, ResultHandler<T> handler) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.execute(query);
+        ResultSet result = stmt.getResultSet();
+        T value = handler.handle(result);
+        result.close();
+        stmt.close();
+        closeConnection(connection);
+        return value;
+    }
+
+    public static Connection getConnection() {
         FileInputStream fis;
         Properties property = new Properties();
         try {
@@ -33,14 +57,15 @@ public class DaoFactoryConnection implements ConnectionFactory {
         return null;
     }
 
-    @Override
-    public void closeConnection(Connection connection) {
+    public static void closeConnection(Connection connection) {
         if (connection != null)
             try {
                 connection.close();
+                System.out.println("Close connection");
             } catch (SQLException e) {
                 System.err.println("Connection don't close");
                 e.printStackTrace();
             }
     }
+
 }
