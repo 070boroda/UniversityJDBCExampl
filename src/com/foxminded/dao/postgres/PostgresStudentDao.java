@@ -1,11 +1,15 @@
 package com.foxminded.dao.postgres;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.Student;
 
 public class PostgresStudentDao extends AbstractDao<Integer, Student> {
+    final static String SQL_CREATE = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,?,?);";
+    final static String SQL_DELETE = "DELETE FROM students WHERE first_name=? AND last_name=?;";
+    final static String SQL_UPDATE_NAME_BY_ID = "UPDATE students SET first_name =? WHERE id =?;";
     Executor executor;
 
     public PostgresStudentDao() {
@@ -22,28 +26,37 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
 
     @Override
     public void delete(Student entity) throws SQLException {
-        String sqlDelete = "DELETE FROM students WHERE first_name='" + entity.getFirstName() + "'AND last_name='"
-                + entity.getSecondName() + "';";
-        executor.execUpdate(sqlDelete);
+        executor.execUpdate(SQL_DELETE, stmt -> {
+            stmt.setString(1, entity.getFirstName());
+            stmt.setString(2, entity.getSecondName());
+        });
     }
 
     public void create(String first_name, String last_name) throws SQLException {
-        String sqlCreate = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,'" + first_name + "','"
-                + last_name + "');";
-        executor.execUpdate(sqlCreate);
-
+        executor.execUpdate(SQL_CREATE, stmt -> {
+            stmt.setString(1, first_name);
+            stmt.setString(2, last_name);
+            stmt.execute();
+        });
     }
 
     @Override
-    public List<Student> getAll() {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Student> getAll() throws SQLException {
+        String sqlGetAll = "SELECT * FROM students;";
+        List<Student> all = new ArrayList<>();
+        return (List<Student>) executor.execQuery(sqlGetAll, result -> {
+            while (result.next()) {
+                all.add(new Student(result.getString(2), result.getString(3)));
+            }
+            return all;
+        });
     }
 
     @Override
     public void update(Student entity, Integer id) throws SQLException {
-        String sqlUpdate = "UPDATE students SET first_name = '" + entity.getFirstName() + "' WHERE id = " + id + ";";
-        executor.execUpdate(sqlUpdate);
+        executor.execUpdate(SQL_UPDATE_NAME_BY_ID, stmt -> {
+            stmt.setString(1, entity.getFirstName());
+            stmt.setInt(2, entity.getId());
+        });
     }
-
 }

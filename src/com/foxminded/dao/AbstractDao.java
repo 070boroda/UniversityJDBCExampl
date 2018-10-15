@@ -8,7 +8,7 @@ public abstract class AbstractDao<K, T> {
 
     public abstract void create(String k, String n) throws SQLException;
 
-    public abstract List<T> getAll();
+    public abstract List<T> getAll() throws SQLException;
 
     public abstract void delete(T entity) throws SQLException;
 
