@@ -20,6 +20,13 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
         });
     }
 
+    @Override
+    public void delete(Student entity) throws SQLException {
+        String sqlDelete = "DELETE FROM students WHERE first_name='" + entity.getFirstName() + "'AND last_name='"
+                + entity.getSecondName() + "';";
+        executor.execUpdate(sqlDelete);
+    }
+
     public void create(String first_name, String last_name) throws SQLException {
         String sqlCreate = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,'" + first_name + "','"
                 + last_name + "');";
@@ -34,15 +41,9 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
     }
 
     @Override
-    public boolean delete(Student entity) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean update(Student entity) {
-        // TODO Auto-generated method stub
-        return false;
+    public void update(Student entity, Integer id) throws SQLException {
+        String sqlUpdate = "UPDATE students SET first_name = '" + entity.getFirstName() + "' WHERE id = " + id + ";";
+        executor.execUpdate(sqlUpdate);
     }
 
 }

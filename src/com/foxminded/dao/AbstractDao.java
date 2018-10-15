@@ -10,8 +10,8 @@ public abstract class AbstractDao<K, T> {
 
     public abstract List<T> getAll();
 
-    public abstract boolean delete(T entity);
+    public abstract void delete(T entity) throws SQLException;
 
-    public abstract boolean update(T entity);
+    public abstract void update(T entity, K k) throws SQLException;
 
 }
