@@ -42,7 +42,7 @@ public class Executor<T> {
         FileInputStream fis;
         Properties property = new Properties();
         try {
-            fis = new FileInputStream("D:/Project2/University/Resources/config.properties");
+            fis = new FileInputStream("config.properties");
             property.load(fis);
 
             String url = property.getProperty("db.host");
