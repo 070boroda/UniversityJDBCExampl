@@ -1,17 +1,10 @@
 package com.foxminded.universety;
 
-import java.sql.SQLException;
-
-import com.foxminded.dao.postgres.PostgresStudentDao;
-
 public class University {
 
-    public void createUniversity() throws SQLException {
+    public void createUniversity() {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
-
-        PostgresStudentDao dao = new PostgresStudentDao();
-        dao.create("Vas", "Kuchi");
 
         group1.addStudent(new Student("Vladimir", "Putin"));
         group1.addStudent(new Student("Sashka", "Lukash"));
