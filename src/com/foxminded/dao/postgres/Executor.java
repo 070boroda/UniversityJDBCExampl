@@ -9,21 +9,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-
-import com.foxminded.dao.HandlerStatment;
 import com.foxminded.dao.ResultHandler;
 
 public class Executor<T> {
 
-    public void execUpdate(String update, HandlerStatment handler) throws SQLException {
+    public void execUpdate(String update, Object... parametrs) throws SQLException {
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(update)) {
-            handler.handle(statement);
+            int count = 1;
+            for (Object value : parametrs) {
+                statement.setObject(count++, value);
+            }
+            statement.executeUpdate();
         }
     }
 
-    public <T> T execQuery(String query, ResultHandler<T> handler) throws SQLException {
-        try (Connection connection = getConnection(); Statement stmt = connection.createStatement()) {
+    public <T> T execQuery(String query, ResultHandler<T> handler, Object... parametrs) throws SQLException {
+        try (Connection connection = getConnection(); PreparedStatement stmt = connection.prepareStatement(query)) {
+            int count = 1;
+            for (Object value : parametrs) {
+                stmt.setObject(count++, value);
+            }
             stmt.execute(query);
             ResultSet result = stmt.getResultSet();
             T value = handler.handle(result);

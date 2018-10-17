@@ -26,18 +26,11 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
 
     @Override
     public void delete(Student entity) throws SQLException {
-        executor.execUpdate(SQL_DELETE, stmt -> {
-            stmt.setString(1, entity.getFirstName());
-            stmt.setString(2, entity.getSecondName());
-        });
+        executor.execUpdate(SQL_DELETE, entity.getFirstName(), entity.getSecondName());
     }
 
     public void create(String first_name, String last_name) throws SQLException {
-        executor.execUpdate(SQL_CREATE, stmt -> {
-            stmt.setString(1, first_name);
-            stmt.setString(2, last_name);
-            stmt.execute();
-        });
+        executor.execUpdate(SQL_CREATE, first_name, last_name);
     }
 
     @Override
@@ -54,9 +47,6 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
 
     @Override
     public void update(Student entity, Integer id) throws SQLException {
-        executor.execUpdate(SQL_UPDATE_NAME_BY_ID, stmt -> {
-            stmt.setString(1, entity.getFirstName());
-            stmt.setInt(2, entity.getId());
-        });
+        executor.execUpdate(SQL_UPDATE_NAME_BY_ID, entity.getFirstName(), id);
     }
 }
