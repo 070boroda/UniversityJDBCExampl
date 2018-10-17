@@ -8,5 +8,6 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 @AllArgsConstructor
 public class LectureHall {
+    private int id;
     private int number;
 }

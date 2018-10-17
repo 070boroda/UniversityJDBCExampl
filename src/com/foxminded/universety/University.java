@@ -24,10 +24,10 @@ public class University {
         Subject subjectGeometrik = new Subject("Geometric");
         Subject subjectGeografic = new Subject("Geografic");
 
-        LectureHall lectureHall201 = new LectureHall(201);
-        LectureHall lectureHall202 = new LectureHall(202);
-        LectureHall lectureHall203 = new LectureHall(203);
-        LectureHall lectureHall204 = new LectureHall(204);
+        LectureHall lectureHall201 = new LectureHall(1, 201);
+        LectureHall lectureHall202 = new LectureHall(1, 202);
+        LectureHall lectureHall203 = new LectureHall(1, 203);
+        LectureHall lectureHall204 = new LectureHall(1, 204);
 
         Schedule schedule = new Schedule();
         schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.ONE,
