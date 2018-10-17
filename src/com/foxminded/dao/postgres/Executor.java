@@ -30,7 +30,7 @@ public class Executor<T> {
             for (Object value : parametrs) {
                 stmt.setObject(count++, value);
             }
-            stmt.execute(query);
+            stmt.executeQuery();
             ResultSet result = stmt.getResultSet();
             T value = handler.handle(result);
             result.close();

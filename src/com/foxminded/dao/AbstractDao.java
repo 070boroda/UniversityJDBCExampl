@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class AbstractDao<K, T> {
     public abstract T getById(K k) throws SQLException;
 
-    public abstract void create(String k, String n) throws SQLException;
+    public abstract void create(T t) throws SQLException;
 
     public abstract List<T> getAll() throws SQLException;
 
