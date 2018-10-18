@@ -6,7 +6,7 @@ import java.util.List;
 import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.LectureHall;
 
-public class PostgresLectureHallDao extends AbstractDao<Integer, LectureHall> {
+public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
     final static String SQL_CREATE = "INSERT INTO LectureHall (id,number) VALUES (DEFAULT,?);";
     final static String SQL_DELETE = "DELETE FROM LectureHall WHERE number=?;";
     final static String SQL_UPDATE_NAME_BY_ID = "UPDATE LectureHall SET number =? WHERE id =?;";
@@ -14,7 +14,7 @@ public class PostgresLectureHallDao extends AbstractDao<Integer, LectureHall> {
     final static String SQL_GET_ALL = "SELECT * FROM LectureHall;";
     Executor executor;
 
-    public PostgresLectureHallDao() {
+    public LectureHallDao() {
         this.executor = new Executor();
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.Group;
 
-public class PostgresGroupDao extends AbstractDao<Integer, Group> {
+public class GroupDao extends AbstractDao<Integer, Group> {
 
     final static String SQL_CREATE = "INSERT INTO groups (id,name) VALUES (DEFAULT,?);";
     final static String SQL_DELETE = "DELETE FROM groups WHERE name=?;";
@@ -15,7 +15,7 @@ public class PostgresGroupDao extends AbstractDao<Integer, Group> {
     final static String SQL_GET_ALL = "SELECT * FROM groups;";
     Executor executor;
 
-    public PostgresGroupDao() {
+    public GroupDao() {
         this.executor = new Executor();
     }
 

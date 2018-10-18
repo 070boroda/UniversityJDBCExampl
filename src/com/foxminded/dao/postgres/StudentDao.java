@@ -6,7 +6,7 @@ import java.util.List;
 import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.Student;
 
-public class PostgresStudentDao extends AbstractDao<Integer, Student> {
+public class StudentDao extends AbstractDao<Integer, Student> {
     final static String SQL_CREATE = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,?,?);";
     final static String SQL_DELETE = "DELETE FROM students WHERE first_name=? AND last_name=?;";
     final static String SQL_UPDATE_NAME_BY_ID = "UPDATE students SET first_name =? WHERE id =?;";
@@ -14,7 +14,7 @@ public class PostgresStudentDao extends AbstractDao<Integer, Student> {
     final static String SQL_GET_ALL = "SELECT * FROM students;";
     Executor executor;
 
-    public PostgresStudentDao() {
+    public StudentDao() {
         this.executor = new Executor();
     }
 

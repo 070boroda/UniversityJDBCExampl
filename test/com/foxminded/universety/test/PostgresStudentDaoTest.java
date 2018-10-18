@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 import java.sql.SQLException;
 
 import org.junit.Test;
-import com.foxminded.dao.postgres.PostgresStudentDao;
+import com.foxminded.dao.postgres.StudentDao;
 import com.foxminded.universety.Student;
 
 public class PostgresStudentDaoTest {
 
     @Test
     public void GetByIdTest() throws SQLException {
-        PostgresStudentDao studentdao = new PostgresStudentDao();
+        StudentDao studentdao = new StudentDao();
         Student dbstudent;
         dbstudent = studentdao.getById(1);
         Student studentTest = new Student();
