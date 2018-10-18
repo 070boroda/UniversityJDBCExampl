@@ -7,12 +7,12 @@ import com.foxminded.dao.AbstractDao;
 import com.foxminded.universety.LectureHall;
 
 public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
-    final static String SQL_CREATE = "INSERT INTO LectureHall (id,number) VALUES (DEFAULT,?);";
-    final static String SQL_DELETE = "DELETE FROM LectureHall WHERE number=?;";
-    final static String SQL_UPDATE_NAME_BY_ID = "UPDATE LectureHall SET number =? WHERE id =?;";
-    final static String SQL_GET_BY_ID = "SELECT * FROM LectureHall WHERE id=?;";
-    final static String SQL_GET_ALL = "SELECT * FROM LectureHall;";
-    Executor executor;
+    private final static String SQL_CREATE = "INSERT INTO LectureHall (id,number) VALUES (DEFAULT,?);";
+    private final static String SQL_DELETE = "DELETE FROM LectureHall WHERE number=?;";
+    private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE LectureHall SET number =? WHERE id =?;";
+    private final static String SQL_GET_BY_ID = "SELECT * FROM LectureHall WHERE id=?;";
+    private final static String SQL_GET_ALL = "SELECT * FROM LectureHall;";
+    private Executor executor;
 
     public LectureHallDao() {
         this.executor = new Executor();

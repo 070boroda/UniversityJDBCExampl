@@ -8,12 +8,12 @@ import com.foxminded.universety.Group;
 
 public class GroupDao extends AbstractDao<Integer, Group> {
 
-    final static String SQL_CREATE = "INSERT INTO groups (id,name) VALUES (DEFAULT,?);";
-    final static String SQL_DELETE = "DELETE FROM groups WHERE name=?;";
-    final static String SQL_UPDATE_NAME_BY_ID = "UPDATE groups SET name =? WHERE id =?;";
-    final static String SQL_GET_BY_ID = "SELECT * FROM groups WHERE id=?;";
-    final static String SQL_GET_ALL = "SELECT * FROM groups;";
-    Executor executor;
+    private final static String SQL_CREATE = "INSERT INTO groups (id,name) VALUES (DEFAULT,?);";
+    private final static String SQL_DELETE = "DELETE FROM groups WHERE name=?;";
+    private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE groups SET name =? WHERE id =?;";
+    private final static String SQL_GET_BY_ID = "SELECT * FROM groups WHERE id=?;";
+    private final static String SQL_GET_ALL = "SELECT * FROM groups;";
+    private Executor executor;
 
     public GroupDao() {
         this.executor = new Executor();
