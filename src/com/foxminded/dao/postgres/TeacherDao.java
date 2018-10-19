@@ -13,17 +13,17 @@ public class TeacherDao extends AbstractDao<Integer, Teacher> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE teachers SET first_name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM teachers WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM teachers;";
-    private Executor executor;
+    private Executor<Teacher> executor;
 
     public TeacherDao() {
-        this.executor = new Executor();
+        this.executor = new Executor<Teacher>();
     }
 
     @Override
     public Teacher getById(Integer id) throws SQLException {
-        return (Teacher) executor.execQuery(SQL_GET_BY_ID, result -> {
+        return executor.execQuery(SQL_GET_BY_ID, result -> {
             result.next();
-            return new Teacher(result.getString(2), result.getString(3));
+            return new Teacher(result.getString("first_name"), result.getString("last_name"));
         }, id);
     }
 
@@ -39,9 +39,9 @@ public class TeacherDao extends AbstractDao<Integer, Teacher> {
     @Override
     public List<Teacher> getAll() throws SQLException {
         List<Teacher> all = new ArrayList<>();
-        return (List<Teacher>) executor.execQuery(SQL_GET_ALL, result -> {
+        return executor.execQuery(SQL_GET_ALL, result -> {
             while (result.next()) {
-                all.add(new Teacher(result.getString(2), result.getString(3)));
+                all.add(new Teacher(result.getString("first_name"), result.getString("last_name")));
             }
             return all;
         });

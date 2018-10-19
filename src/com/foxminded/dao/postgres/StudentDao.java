@@ -12,17 +12,17 @@ public class StudentDao extends AbstractDao<Integer, Student> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE students SET first_name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM students WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM students;";
-    private Executor executor;
+    private Executor<Student> executor;
 
     public StudentDao() {
-        this.executor = new Executor();
+        this.executor = new Executor<Student>();
     }
 
     @Override
     public Student getById(Integer id) throws SQLException {
-        return (Student) executor.execQuery(SQL_GET_BY_ID, result -> {
+        return executor.execQuery(SQL_GET_BY_ID, result -> {
             result.next();
-            return new Student(result.getString(2), result.getString(3));
+            return new Student(result.getString("first_name"), result.getString("last_name"));
         }, id);
     }
 
@@ -38,9 +38,9 @@ public class StudentDao extends AbstractDao<Integer, Student> {
     @Override
     public List<Student> getAll() throws SQLException {
         List<Student> all = new ArrayList<>();
-        return (List<Student>) executor.execQuery(SQL_GET_ALL, result -> {
+        return executor.execQuery(SQL_GET_ALL, result -> {
             while (result.next()) {
-                all.add(new Student(result.getString(2), result.getString(3)));
+                all.add(new Student(result.getString("first_name"), result.getString("last_name")));
             }
             return all;
         });

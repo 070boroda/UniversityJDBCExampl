@@ -12,17 +12,17 @@ public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE LectureHall SET number =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM LectureHall WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM LectureHall;";
-    private Executor executor;
+    private Executor<LectureHall> executor;
 
     public LectureHallDao() {
-        this.executor = new Executor();
+        this.executor = new Executor<LectureHall>();
     }
 
     @Override
     public LectureHall getById(Integer id) throws SQLException {
-        return (LectureHall) executor.execQuery(SQL_GET_BY_ID, result -> {
+        return executor.execQuery(SQL_GET_BY_ID, result -> {
             result.next();
-            return new LectureHall(result.getInt(1), result.getInt(2));
+            return new LectureHall(result.getInt("id"), result.getInt("number"));
         }, id);
     }
 
@@ -35,9 +35,9 @@ public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
     @Override
     public List<LectureHall> getAll() throws SQLException {
         List<LectureHall> all = new ArrayList<>();
-        return (List<LectureHall>) executor.execQuery(SQL_GET_ALL, result -> {
+        return executor.execQuery(SQL_GET_ALL, result -> {
             while (result.next()) {
-                all.add(new LectureHall(result.getInt(1), result.getInt(2)));
+                all.add(new LectureHall(result.getInt("id"), result.getInt("number")));
             }
             return all;
         });

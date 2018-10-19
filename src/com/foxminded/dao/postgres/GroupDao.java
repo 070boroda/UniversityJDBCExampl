@@ -13,17 +13,17 @@ public class GroupDao extends AbstractDao<Integer, Group> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE groups SET name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM groups WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM groups;";
-    private Executor executor;
+    private Executor<Group> executor;
 
     public GroupDao() {
-        this.executor = new Executor();
+        this.executor = new Executor<Group>();
     }
 
     @Override
     public Group getById(Integer id) throws SQLException {
-        return (Group) executor.execQuery(SQL_GET_BY_ID, result -> {
+        return executor.execQuery(SQL_GET_BY_ID, result -> {
             result.next();
-            return new Group(result.getString(2));
+            return new Group(result.getString("name"));
         }, id);
     }
 
@@ -36,9 +36,9 @@ public class GroupDao extends AbstractDao<Integer, Group> {
     @Override
     public List<Group> getAll() throws SQLException {
         List<Group> all = new ArrayList<>();
-        return (List<Group>) executor.execQuery(SQL_GET_ALL, result -> {
+        return executor.execQuery(SQL_GET_ALL, result -> {
             while (result.next()) {
-                all.add(new Group(result.getString(2)));
+                all.add(new Group(result.getString("name")));
             }
             return all;
         });

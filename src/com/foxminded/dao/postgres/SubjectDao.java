@@ -13,17 +13,17 @@ public class SubjectDao extends AbstractDao<Integer, Subject> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE subject SET name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM subject WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM subject;";
-    private Executor executor;
+    private Executor<Subject> executor;
 
     public SubjectDao() {
-        this.executor = new Executor();
+        this.executor = new Executor<Subject>();
     }
 
     @Override
     public Subject getById(Integer id) throws SQLException {
-        return (Subject) executor.execQuery(SQL_GET_BY_ID, result -> {
+        return executor.execQuery(SQL_GET_BY_ID, result -> {
             result.next();
-            return new Subject(result.getInt(1), result.getString(2));
+            return new Subject(result.getInt("id"), result.getString("name"));
         }, id);
     }
 
@@ -36,9 +36,9 @@ public class SubjectDao extends AbstractDao<Integer, Subject> {
     @Override
     public List<Subject> getAll() throws SQLException {
         List<Subject> all = new ArrayList<>();
-        return (List<Subject>) executor.execQuery(SQL_GET_ALL, result -> {
+        return executor.execQuery(SQL_GET_ALL, result -> {
             while (result.next()) {
-                all.add(new Subject(result.getInt(1), result.getString(2)));
+                all.add(new Subject(result.getInt("id"), result.getString("name")));
             }
             return all;
         });
