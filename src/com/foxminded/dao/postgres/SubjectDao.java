@@ -35,8 +35,8 @@ public class SubjectDao extends AbstractDao<Integer, Subject> {
 
     @Override
     public List<Subject> getAll() throws SQLException {
-        List<Subject> all = new ArrayList<>();
         return executor.execQuery(SQL_GET_ALL, result -> {
+            List<Subject> all = new ArrayList<>();
             while (result.next()) {
                 all.add(new Subject(result.getInt("id"), result.getString("name")));
             }

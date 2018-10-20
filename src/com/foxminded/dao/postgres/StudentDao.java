@@ -37,8 +37,8 @@ public class StudentDao extends AbstractDao<Integer, Student> {
 
     @Override
     public List<Student> getAll() throws SQLException {
-        List<Student> all = new ArrayList<>();
         return executor.execQuery(SQL_GET_ALL, result -> {
+            List<Student> all = new ArrayList<>();
             while (result.next()) {
                 all.add(new Student(result.getString("first_name"), result.getString("last_name")));
             }

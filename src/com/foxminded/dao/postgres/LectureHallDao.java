@@ -34,8 +34,8 @@ public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
 
     @Override
     public List<LectureHall> getAll() throws SQLException {
-        List<LectureHall> all = new ArrayList<>();
         return executor.execQuery(SQL_GET_ALL, result -> {
+            List<LectureHall> all = new ArrayList<>();
             while (result.next()) {
                 all.add(new LectureHall(result.getInt("id"), result.getInt("number")));
             }

@@ -38,8 +38,8 @@ public class TeacherDao extends AbstractDao<Integer, Teacher> {
 
     @Override
     public List<Teacher> getAll() throws SQLException {
-        List<Teacher> all = new ArrayList<>();
         return executor.execQuery(SQL_GET_ALL, result -> {
+            List<Teacher> all = new ArrayList<>();
             while (result.next()) {
                 all.add(new Teacher(result.getString("first_name"), result.getString("last_name")));
             }

@@ -35,8 +35,8 @@ public class GroupDao extends AbstractDao<Integer, Group> {
 
     @Override
     public List<Group> getAll() throws SQLException {
-        List<Group> all = new ArrayList<>();
         return executor.execQuery(SQL_GET_ALL, result -> {
+            List<Group> all = new ArrayList<>();
             while (result.next()) {
                 all.add(new Group(result.getString("name")));
             }
