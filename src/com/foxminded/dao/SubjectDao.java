@@ -13,10 +13,10 @@ public class SubjectDao extends AbstractDao<Integer, Subject> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE subject SET name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM subject WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM subject;";
-    private Executor<Subject> executor;
+    private Executor executor;
 
     public SubjectDao() {
-        this.executor = new Executor<Subject>();
+        this.executor = new Executor();
     }
 
     @Override

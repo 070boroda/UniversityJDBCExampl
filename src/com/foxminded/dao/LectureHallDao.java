@@ -12,10 +12,10 @@ public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE LectureHall SET number =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM LectureHall WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM LectureHall;";
-    private Executor<LectureHall> executor;
+    private Executor executor;
 
     public LectureHallDao() {
-        this.executor = new Executor<LectureHall>();
+        this.executor = new Executor();
     }
 
     @Override

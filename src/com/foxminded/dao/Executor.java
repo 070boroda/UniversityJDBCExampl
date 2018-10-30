@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class Executor<T> {
+public class Executor {
 
     public void execUpdate(String update, Object... parametrs) throws SQLException {
         try (Connection connection = getConnection();

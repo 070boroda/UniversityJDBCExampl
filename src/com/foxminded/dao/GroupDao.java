@@ -13,10 +13,10 @@ public class GroupDao extends AbstractDao<Integer, Group> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE groups SET name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM groups WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM groups;";
-    private Executor<Group> executor;
+    private Executor executor;
 
     public GroupDao() {
-        this.executor = new Executor<Group>();
+        this.executor = new Executor();
     }
 
     @Override

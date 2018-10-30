@@ -12,10 +12,10 @@ public class TeacherDao extends AbstractDao<Integer, Teacher> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE teachers SET first_name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM teachers WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM teachers;";
-    private Executor<Teacher> executor;
+    private Executor executor;
 
     public TeacherDao() {
-        this.executor = new Executor<Teacher>();
+        this.executor = new Executor();
     }
 
     @Override
