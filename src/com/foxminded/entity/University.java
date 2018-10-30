@@ -1,4 +1,4 @@
-package com.foxminded.universety;
+package com.foxminded.entity;
 
 public class University {
 
@@ -6,30 +6,28 @@ public class University {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
 
-        Student studTest = new Student("Vaska", "Petka");
-        group1.addStudent(studTest);
         group1.addStudent(new Student("Vladimir", "Putin"));
         group1.addStudent(new Student("Sashka", "Lukash"));
         group2.addStudent(new Student("Dimka", "Medvedev"));
         group2.addStudent(new Student("Angelka", "Merkel"));
         group2.addStudent(new Student("Donald", "Tramp"));
 
-        Teacher teacherAmerica = new Teacher("Capitan", "America");
-        Teacher teacherSpider = new Teacher("Spider", "Man");
-        Teacher teacherIron = new Teacher("Iron", "Man");
-        Teacher teacherHawk = new Teacher("Hawk", "Key");
-        Teacher teacherAqua = new Teacher("Aqua", "Man");
+        Teacher teacherAmerica = new Teacher(1, "Capitan", "America");
+        Teacher teacherSpider = new Teacher(2, "Spider", "Man");
+        Teacher teacherIron = new Teacher(3, "Iron", "Man");
+        Teacher teacherHawk = new Teacher(4, "Hawk", "Key");
+        Teacher teacherAqua = new Teacher(5, "Aqua", "Man");
 
-        Subject subjectMathematic = new Subject("Mathematic");
-        Subject subjectEnglish = new Subject("English");
-        Subject subjectProgramming = new Subject("Programming");
-        Subject subjectGeometrik = new Subject("Geometric");
-        Subject subjectGeografic = new Subject("Geografic");
+        Subject subjectMathematic = new Subject(1, "Mathematic");
+        Subject subjectEnglish = new Subject(2, "English");
+        Subject subjectProgramming = new Subject(3, "Programming");
+        Subject subjectGeometrik = new Subject(4, "Geometric");
+        Subject subjectGeografic = new Subject(5, "Geografic");
 
-        LectureHall lectureHall201 = new LectureHall(201);
-        LectureHall lectureHall202 = new LectureHall(202);
-        LectureHall lectureHall203 = new LectureHall(203);
-        LectureHall lectureHall204 = new LectureHall(204);
+        LectureHall lectureHall201 = new LectureHall(1, 201);
+        LectureHall lectureHall202 = new LectureHall(1, 202);
+        LectureHall lectureHall203 = new LectureHall(1, 203);
+        LectureHall lectureHall204 = new LectureHall(1, 204);
 
         Schedule schedule = new Schedule();
         schedule.createSchedule(DayOfWeek.MONDAY, NumberLesson.ONE,
@@ -53,8 +51,6 @@ public class University {
         schedule.getFieldTeacher(teacherAqua, DayOfWeek.MONDAY);
         schedule.getFieldTeacher(teacherAmerica, DayOfWeek.MONDAY);
         schedule.getFieldTeacher(teacherAmerica, DayOfWeek.TUESDAY);
-
-        schedule.getFieldStudents(studTest, DayOfWeek.MONDAY);
 
     }
 }

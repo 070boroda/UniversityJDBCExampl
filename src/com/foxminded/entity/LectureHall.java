@@ -1,4 +1,4 @@
-package com.foxminded.universety;
+package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,5 +8,6 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 @AllArgsConstructor
 public class LectureHall {
+    private int id;
     private int number;
 }

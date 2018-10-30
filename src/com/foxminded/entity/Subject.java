@@ -1,4 +1,4 @@
-package com.foxminded.universety;
+package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Subject {
+    private int id;
     private String name;
 
     @Override

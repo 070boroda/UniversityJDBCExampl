@@ -1,12 +1,10 @@
 package com.foxminded.main;
 
-import com.foxminded.universety.University;
+import java.sql.SQLException;
 
 public class Main {
 
-    public static void main(String[] args) {
-        University run = new University();
-        run.createUniversity();
-    }
+    public static void main(String[] args) throws SQLException {
 
+    }
 }
