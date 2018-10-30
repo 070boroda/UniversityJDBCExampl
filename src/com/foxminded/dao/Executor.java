@@ -44,7 +44,7 @@ public class Executor {
             String name = property.getProperty("db.login");
             String password = property.getProperty("db.pas");
             return DriverManager.getConnection(url, name, password);
-        } catch (IOException | SQLException e) {
+        } catch (RuntimeException | IOException | SQLException e) {
             System.err.println("File or data not found");
             e.printStackTrace();
         }
