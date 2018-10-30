@@ -1,4 +1,4 @@
-package com.foxminded.universety;
+package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

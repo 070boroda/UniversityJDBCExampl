@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.foxminded.dao.AbstractDao;
-import com.foxminded.universety.Group;
+import com.foxminded.entity.Group;
 
 public class GroupDao extends AbstractDao<Integer, Group> {
 

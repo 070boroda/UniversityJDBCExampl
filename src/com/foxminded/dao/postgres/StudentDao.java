@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.foxminded.dao.AbstractDao;
-import com.foxminded.universety.Student;
+import com.foxminded.entity.Student;
 
 public class StudentDao extends AbstractDao<Integer, Student> {
     private final static String SQL_CREATE = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,?,?);";
