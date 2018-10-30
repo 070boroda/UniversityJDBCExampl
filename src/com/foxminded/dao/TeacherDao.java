@@ -1,10 +1,9 @@
-package com.foxminded.dao.postgres;
+package com.foxminded.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.foxminded.dao.AbstractDao;
 import com.foxminded.entity.Teacher;
 
 public class TeacherDao extends AbstractDao<Integer, Teacher> {

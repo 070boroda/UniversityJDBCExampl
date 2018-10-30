@@ -5,7 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.sql.SQLException;
 
 import org.junit.Test;
-import com.foxminded.dao.postgres.StudentDao;
+
+import com.foxminded.dao.StudentDao;
 import com.foxminded.entity.Student;
 
 public class PostgresStudentDaoTest {

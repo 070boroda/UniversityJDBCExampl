@@ -1,4 +1,4 @@
-package com.foxminded.dao.postgres;
+package com.foxminded.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-import com.foxminded.dao.ResultHandler;
 
 public class Executor<T> {
 
