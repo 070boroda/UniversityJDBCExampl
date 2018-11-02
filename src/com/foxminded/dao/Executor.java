@@ -12,11 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Executor {
-<<<<<<< HEAD
-=======
-	
-    //static final Logger LOG = LoggerFactory.getLogger(Executor.class);
->>>>>>> branch 'Dev' of http://git.foxminded.com.ua/070boroda/University.git
 
     public void execUpdate(String update, Object... parametrs) throws SQLException {
         try (Connection connection = getConnection();
