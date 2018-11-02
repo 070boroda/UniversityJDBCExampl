@@ -8,13 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import lombok.extern.slf4j.Slf4j;
 
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
-
+@Slf4j
 public class Executor {
-
-    static final Logger LOG = LoggerFactory.getLogger(Executor.class);
+	
+    //static final Logger LOG = LoggerFactory.getLogger(Executor.class);
 
     public void execUpdate(String update, Object... parametrs) throws SQLException {
         try (Connection connection = getConnection();
@@ -43,7 +42,7 @@ public class Executor {
 
     public static Connection getConnection() {
         Properties property = new Properties();
-        LOG.info("Start connection");
+        log.info("Start connection");
         try (FileInputStream fin = new FileInputStream("config.properties")) {
             property.load(fin);
             String url = property.getProperty("db.host");
@@ -51,7 +50,7 @@ public class Executor {
             String password = property.getProperty("db.pas");
             return DriverManager.getConnection(url, name, password);
         } catch (RuntimeException | IOException | SQLException e) {
-            LOG.error("Connection is FALSE");
+            log.error("Connection is FALSE");
             e.printStackTrace();
         }
         return null;
