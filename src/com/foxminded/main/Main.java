@@ -1,14 +1,17 @@
 package com.foxminded.main;
 
 import java.sql.SQLException;
+import com.foxminded.entity.University;
 
-import com.foxminded.dao.StudentDao;
-
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        StudentDao studD = new StudentDao();
-        studD.getById(1);
+    	
+    	log.info("Start main");
+        University un = new University();
+        un.createUniversity();
 
     }
 }
