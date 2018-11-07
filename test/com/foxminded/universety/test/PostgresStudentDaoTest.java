@@ -18,8 +18,8 @@ public class PostgresStudentDaoTest {
         dbstudent = studentdao.getById(1);
         Student studentTest = new Student();
         studentTest.setId(1);
-        studentTest.setFirstName("fdsa");
-        studentTest.setSecondName("fgfgfdg");
+        studentTest.setFirstName("putin");
+        studentTest.setSecondName("alex");
         assertEquals(dbstudent, studentTest);
     }
 
