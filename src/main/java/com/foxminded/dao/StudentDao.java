@@ -1,10 +1,10 @@
-package com.foxminded.dao;
+package main.java.com.foxminded.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.foxminded.entity.Student;
+import main.java.com.foxminded.entity.*;
 
 public class StudentDao extends AbstractDao<Integer, Student> {
     private final static String SQL_CREATE = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,?,?);";

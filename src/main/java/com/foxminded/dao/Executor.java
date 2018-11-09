@@ -1,4 +1,4 @@
-package com.foxminded.dao;
+package main.java.com.foxminded.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;

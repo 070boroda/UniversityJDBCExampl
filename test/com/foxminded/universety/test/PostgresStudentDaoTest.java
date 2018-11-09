@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.foxminded.dao.StudentDao;
-import com.foxminded.entity.Student;
+import main.java.com.foxminded.dao.*;
+import main.java.com.foxminded.entity.*;
 
 public class PostgresStudentDaoTest {
 

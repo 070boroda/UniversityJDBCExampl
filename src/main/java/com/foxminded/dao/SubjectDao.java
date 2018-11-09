@@ -1,10 +1,10 @@
-package com.foxminded.dao;
+package main.java.com.foxminded.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.foxminded.entity.Subject;
+import main.java.com.foxminded.entity.Subject;;
 
 public class SubjectDao extends AbstractDao<Integer, Subject> {
 
