@@ -1,10 +1,9 @@
-package com.foxminded.dao;
+package main.java.com.foxminded.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.foxminded.entity.Group;
+import main.java.com.foxminded.entity.Group;;
 
 public class GroupDao extends AbstractDao<Integer, Group> {
 

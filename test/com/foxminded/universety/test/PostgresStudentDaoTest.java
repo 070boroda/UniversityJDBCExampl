@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.foxminded.dao.StudentDao;
-import com.foxminded.entity.Student;
+import main.java.com.foxminded.dao.*;
+import main.java.com.foxminded.entity.*;
 
 public class PostgresStudentDaoTest {
 
@@ -18,8 +18,8 @@ public class PostgresStudentDaoTest {
         dbstudent = studentdao.getById(1);
         Student studentTest = new Student();
         studentTest.setId(1);
-        studentTest.setFirstName("fdsa");
-        studentTest.setSecondName("fgfgfdg");
+        studentTest.setFirstName("putin");
+        studentTest.setSecondName("alex");
         assertEquals(dbstudent, studentTest);
     }
 
