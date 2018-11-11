@@ -1,8 +1,7 @@
-package main.java.com.foxminded.main;
+package com.foxminded.main;
 
 import java.sql.SQLException;
-
-import main.java.com.foxminded.entity.University;
+import com.foxminded.entity.University;
 
 public class Main {
 

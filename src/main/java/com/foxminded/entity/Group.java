@@ -1,8 +1,7 @@
-package main.java.com.foxminded.entity;
+package com.foxminded.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import lombok.Data;
 
 @Data
