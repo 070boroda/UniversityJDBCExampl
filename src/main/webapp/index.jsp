@@ -17,6 +17,8 @@
         <li><a href="subjects">subjects</a></li>
         <li><a href="teachers">teachers</a>
      </ul>
+     
+      <a href="<%= request.getRequestURI() %>">Try Again</a>
 
 </body>
 </html>
