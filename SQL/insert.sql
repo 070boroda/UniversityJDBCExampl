@@ -38,3 +38,10 @@ VALUES (1,1),
 	   (2,3),
 	   (3,3),
 	   (3,2);
+	   
+INSERT INTO subjects (name) VALUES
+('Geographic'),
+('Mathematik'),
+('English'),
+('Programin');
+
