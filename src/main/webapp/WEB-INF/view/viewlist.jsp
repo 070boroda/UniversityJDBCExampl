@@ -12,7 +12,7 @@
 <h2>
 <c:forEach items="${liststudents}" var="student">
  
-  ${student.deptName}
+  <td>${student.firstName}</td>
  
 </c:forEach>
 

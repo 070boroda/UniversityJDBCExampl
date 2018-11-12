@@ -1,6 +1,7 @@
 package com.foxminded.servlet;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,6 +20,10 @@ public class ServletStudent extends HttpServlet {
     private static final long serialVersionUID = 1L;
     StudentDao studentdao = new StudentDao();
 
+    public ServletStudent() {
+        super();
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Student> list = null;
@@ -26,7 +31,7 @@ public class ServletStudent extends HttpServlet {
         try {
             list = studentdao.getAll();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 
