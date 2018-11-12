@@ -2,6 +2,7 @@ package com.foxminded.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,8 +46,13 @@ public class Executor {
     public static Connection getConnection() {
         Properties property = new Properties();
         log.info("Start connection");
-        try (FileInputStream fin = new FileInputStream("./University/src/main/resources/config.properties")) {
-            property.load(fin);
+        try /*
+             * (FileInputStream fin = new
+             * FileInputStream("/University/src/main/resources/config.properties"))
+             */ {
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classloader.getResourceAsStream("/config.properties");
+            property.load(input);
             String url = property.getProperty("db.host");
             String name = property.getProperty("db.login");
             String password = property.getProperty("db.pas");

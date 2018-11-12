@@ -22,14 +22,16 @@ public class ServletStudent extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Student> list = null;
+
         try {
             list = studentdao.getAll();
         } catch (SQLException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         request.setAttribute("liststudents", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewList.jsp\"");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewList.jsp");
         dispatcher.forward(request, response);
 
     }
