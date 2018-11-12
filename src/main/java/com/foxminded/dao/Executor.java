@@ -45,18 +45,18 @@ public class Executor {
     public static Connection getConnection() {
         Properties property = new Properties();
         log.info("Start connection");
-        try /*
+        try {
+            /*
              * (FileInputStream fin = new
-             * FileInputStream("/University/src/main/resources/config.properties"))
-             */ {
-            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            InputStream input = classloader.getResourceAsStream("/config.properties");
-            property.load(input);
-            String url = property.getProperty("db.host");
-            String name = property.getProperty("db.login");
-            String password = property.getProperty("db.pas");
-            return DriverManager.getConnection(url, name, password);
-        } catch (RuntimeException | IOException | SQLException e) {
+             * FileInputStream("/University/src/main/resources/config.properties")) {
+             * ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+             * InputStream input = classloader.getResourceAsStream("/config.properties");
+             * property.load(input); String url = property.getProperty("db.host"); String
+             * name = property.getProperty("db.login"); String password =
+             * property.getProperty("db.pas");
+             */
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/test1", "postgres", "root");
+        } catch (RuntimeException | SQLException e) {
             log.error("Connection is FALSE");
             e.printStackTrace();
         }

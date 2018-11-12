@@ -8,17 +8,10 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<build>
 		<finalName>University</finalName>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>java</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
 
-		<resources>
-			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
