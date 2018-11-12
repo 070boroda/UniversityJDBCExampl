@@ -3,7 +3,7 @@ package com.foxminded.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.foxminded.entity.LectureHall;;
+import com.foxminded.entity.LectureHall;
 
 public class LectureHallDao extends AbstractDao<Integer, LectureHall> {
     private final static String SQL_CREATE = "INSERT INTO LectureHall (id,number) VALUES (DEFAULT,?);";
