@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
 <table border="1px">
  <tr>
      <th>First Name</th>
@@ -24,8 +23,6 @@
 </c:forEach>
 
 </table>
-
-
 
 </body>
 </html>
