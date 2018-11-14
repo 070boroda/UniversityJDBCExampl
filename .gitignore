@@ -6,3 +6,4 @@
 /.settings
 /lib
 /src/main/java/com/foxminded/servlet/ServletStudent.class
+.idea

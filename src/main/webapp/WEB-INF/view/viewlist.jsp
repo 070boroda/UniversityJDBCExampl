@@ -9,14 +9,23 @@
 </head>
 <body>
 
-<h2>
-<c:forEach items="${liststudents}" var="student">
- 
-  <td>${student.firstName}</td>
- 
+
+<table border="1px">
+ <tr>
+     <th>First Name</th>
+     <th>Second Name</th>
+ </tr>
+
+<c:forEach var="student" items="${liststudents}">
+    <tr>
+    <td><c:out value="${student.firstName}"/></td>
+    <td><c:out value="${student.secondName}"/></td>
+    </tr>
 </c:forEach>
 
-</h2>
+</table>
+
+
 
 </body>
 </html>

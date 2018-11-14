@@ -1,10 +1,8 @@
 package com.foxminded.servlet;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.foxminded.dao.StudentDao;
 import com.foxminded.entity.Student;
 
-@WebServlet("/ServletStudent")
+@WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    StudentDao studentdao = new StudentDao();
 
     public ServletStudent() {
         super();
@@ -26,6 +23,7 @@ public class ServletStudent extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        StudentDao studentdao = new StudentDao();
         List<Student> list = null;
 
         try {
@@ -36,7 +34,7 @@ public class ServletStudent extends HttpServlet {
         }
 
         request.setAttribute("liststudents", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewList.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewlist.jsp");
         dispatcher.forward(request, response);
 
     }
