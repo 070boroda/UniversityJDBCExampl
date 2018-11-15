@@ -11,14 +11,12 @@
 
 <table border="1px">
  <tr>
-     <th>First Name</th>
      <th>Second Name</th>
  </tr>
 
 <c:forEach var="value" items="${list}">
     <tr>
-    <td><c:out value="${value.firstName}"/></td>
-    <td><c:out value="${value.secondName}"/></td>
+    <td><c:out value="${value.name}"/></td>
     </tr>
 </c:forEach>
 <h2>

@@ -28,7 +28,7 @@ public class GroupDao extends AbstractDao<Integer, Group> {
 
     @Override
     public void create(Group group) throws SQLException {
-        executor.execUpdate(SQL_CREATE, group.getNumber());
+        executor.execUpdate(SQL_CREATE, group.getName());
 
     }
 
@@ -45,13 +45,13 @@ public class GroupDao extends AbstractDao<Integer, Group> {
 
     @Override
     public void delete(Group entity) throws SQLException {
-        executor.execUpdate(SQL_DELETE, entity.getNumber());
+        executor.execUpdate(SQL_DELETE, entity.getName());
 
     }
 
     @Override
     public void update(Group entity, Integer id) throws SQLException {
-        executor.execUpdate(SQL_UPDATE_NAME_BY_ID, entity.getNumber(), id);
+        executor.execUpdate(SQL_UPDATE_NAME_BY_ID, entity.getName(), id);
 
     }
 

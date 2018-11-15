@@ -3,6 +3,7 @@ package com.foxminded.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,31 +11,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.foxminded.dao.StudentDao;
-import com.foxminded.entity.Student;
+import com.foxminded.dao.SubjectDao;
+import com.foxminded.entity.Subject;
 
-@WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
-public class ServletStudent extends HttpServlet {
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@WebServlet("/ServletSubject")
+public class ServletSubject extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    public ServletStudent() {
-        super();
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StudentDao studentdao = new StudentDao();
-        List<Student> list = null;
+        SubjectDao subjectDao = new SubjectDao();
+        List<Subject> list = null;
 
         try {
-            list = studentdao.getAll();
+            log.info("Start querie in servlet " + this.getServletInfo());
+            list = subjectDao.getAll();
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
 
         request.setAttribute("list", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewDBpeople.jsp");
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/view/viewDBgroupandsubject.jsp");
         dispatcher.forward(request, response);
 
     }

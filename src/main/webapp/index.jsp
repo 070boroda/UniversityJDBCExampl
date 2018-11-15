@@ -14,7 +14,8 @@
       
      <ul>
         <li><a href="ServletStudent">students</a></li>
-        <li><a href="subjects">subjects</a></li>
+        <li><a href="ServletGroup">group</a></li>
+        <li><a href="ServletSubject">subjects</a></li>
         <li><a href="ServletTeacher">teachers</a>
      </ul>
      
