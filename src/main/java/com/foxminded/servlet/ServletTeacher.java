@@ -32,7 +32,7 @@ public class ServletTeacher extends HttpServlet {
         }
 
         request.setAttribute("list", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewlist.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewDBpeople.jsp");
         dispatcher.forward(request, response);
 
     }
