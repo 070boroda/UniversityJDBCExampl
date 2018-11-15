@@ -9,25 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.foxminded.dao.TeacherDao;
+import com.foxminded.entity.Teacher;
+import lombok.extern.slf4j.Slf4j;
 
-import com.foxminded.dao.StudentDao;
-import com.foxminded.entity.Student;
-
-@WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
-public class ServletStudent extends HttpServlet {
+@Slf4j
+@WebServlet("/ServletTeacher")
+public class ServletTeacher extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    public ServletStudent() {
-        super();
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StudentDao studentdao = new StudentDao();
-        List<Student> list = null;
+        TeacherDao teacher = new TeacherDao();
+        List<Teacher> list = null;
 
         try {
-            list = studentdao.getAll();
+            log.info("Start querie in servlet " + this.getServletInfo());
+            list = teacher.getAll();
         } catch (SQLException e) {
 
             e.printStackTrace();

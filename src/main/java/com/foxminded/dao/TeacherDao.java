@@ -39,7 +39,7 @@ public class TeacherDao extends AbstractDao<Integer, Teacher> {
         return executor.execQuery(SQL_GET_ALL, result -> {
             List<Teacher> all = new ArrayList<>();
             while (result.next()) {
-                all.add(new Teacher(result.getString("first_name"), result.getString("last_name")));
+                all.add(new Teacher(result.getString("first_name"), result.getString("second_name")));
             }
             return all;
         });

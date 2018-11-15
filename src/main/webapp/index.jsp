@@ -15,7 +15,7 @@
      <ul>
         <li><a href="ServletStudent">students</a></li>
         <li><a href="subjects">subjects</a></li>
-        <li><a href="teachers">teachers</a>
+        <li><a href="ServletTeacher">teachers</a>
      </ul>
      
       <a href="<%= request.getRequestURI() %>">Try Again</a>

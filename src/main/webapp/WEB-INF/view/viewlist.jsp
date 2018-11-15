@@ -15,14 +15,15 @@
      <th>Second Name</th>
  </tr>
 
-<c:forEach var="student" items="${liststudents}">
+<c:forEach var="value" items="${list}">
     <tr>
-    <td><c:out value="${student.firstName}"/></td>
-    <td><c:out value="${student.secondName}"/></td>
+    <td><c:out value="${value.firstName}"/></td>
+    <td><c:out value="${value.secondName}"/></td>
     </tr>
 </c:forEach>
-
+<h2>
+<a href="<%= "index.jsp" %>">Go to start page</a>
+</h2>
 </table>
-
 </body>
 </html>
