@@ -5,3 +5,5 @@
 .settings
 /.settings
 /lib
+*.class
+.idea

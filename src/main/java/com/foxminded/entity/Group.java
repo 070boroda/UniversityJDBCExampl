@@ -1,18 +1,17 @@
-package main.java.com.foxminded.entity;
+package com.foxminded.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import lombok.Data;
 
 @Data
 public class Group {
 
-    private String number;
+    private String name;
     private List<Student> students = new ArrayList<>();
 
-    public Group(String number) {
-        this.number = number;
+    public Group(String name) {
+        this.name = name;
     }
 
     protected void addStudent(Student student) {
@@ -21,6 +20,6 @@ public class Group {
 
     @Override
     public String toString() {
-        return number;
+        return name;
     }
 }
