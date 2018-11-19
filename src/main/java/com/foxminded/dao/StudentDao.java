@@ -7,7 +7,7 @@ import com.foxminded.entity.Student;
 
 public class StudentDao extends AbstractDao<Integer, Student> {
     private final static String SQL_CREATE = "INSERT INTO students (id,first_name,last_name) VALUES (DEFAULT,?,?);";
-    private final static String SQL_DELETE = "DELETE FROM students WHERE first_name=? AND last_name=?;";
+    private final static String SQL_DELETE = "DELETE FROM students WHERE id =?;";
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE students SET first_name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM students WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM students;";
@@ -27,7 +27,7 @@ public class StudentDao extends AbstractDao<Integer, Student> {
 
     @Override
     public void delete(Student entity) throws SQLException {
-        executor.execUpdate(SQL_DELETE, entity.getFirstName(), entity.getSecondName());
+        executor.execUpdate(SQL_DELETE, entity.getId());
     }
 
     public void create(Student student) throws SQLException {

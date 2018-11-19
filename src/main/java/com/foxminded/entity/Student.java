@@ -2,11 +2,14 @@ package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class Student {
-
+    @NonNull
     private int id;
     private String firstName;
     private String secondName;
