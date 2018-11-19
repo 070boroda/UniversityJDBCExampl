@@ -24,7 +24,6 @@ public class ServletGroup extends HttpServlet {
             throws ServletException, IOException {
         GroupDao groupdao = new GroupDao();
         List<Group> list = null;
-
         try {
             log.info("Start querie in servlet " + this.getServletInfo());
             list = groupdao.getAll();
