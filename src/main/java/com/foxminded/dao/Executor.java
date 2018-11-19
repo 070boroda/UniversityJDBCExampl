@@ -53,7 +53,6 @@ public class Executor {
             String url = property.getProperty("db.host");
             String name = property.getProperty("db.login");
             String password = property.getProperty("db.pas");
-            // Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(url, name, password);
         } catch (RuntimeException | SQLException | IOException e) {
             log.error("Connection is FALSE");
