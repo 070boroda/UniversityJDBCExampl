@@ -13,7 +13,7 @@
       <div align="center">
       <h2>Simple Login Web Application using JSP/Servlet</h2>
      
-        <a href="ServletStudent">students</a><br>
+        <a href="<%= "ServletStudent" %>">Student</a><br>
         <a href="ServletGroup">group</a><br>
         <a href="ServletSubject">subjects</a><br>
         <a href="ServletTeacher">teachers</a><br>

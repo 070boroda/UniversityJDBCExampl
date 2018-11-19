@@ -33,8 +33,9 @@ public class ServletStudent extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("list", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/viewDBpeople.jsp");
+        request.setAttribute("liststudent", list);
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/view/student/studentmanager.jsp");
         dispatcher.forward(request, response);
 
     }

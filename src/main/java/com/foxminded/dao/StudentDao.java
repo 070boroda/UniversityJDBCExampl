@@ -21,7 +21,7 @@ public class StudentDao extends AbstractDao<Integer, Student> {
     public Student getById(Integer id) throws SQLException {
         return executor.execQuery(SQL_GET_BY_ID, result -> {
             result.next();
-            return new Student(result.getString("first_name"), result.getString("last_name"));
+            return new Student(result.getInt("id"), result.getString("first_name"), result.getString("last_name"));
         }, id);
     }
 
@@ -39,7 +39,8 @@ public class StudentDao extends AbstractDao<Integer, Student> {
         return executor.execQuery(SQL_GET_ALL, result -> {
             List<Student> all = new ArrayList<>();
             while (result.next()) {
-                all.add(new Student(result.getString("first_name"), result.getString("last_name")));
+                all.add(new Student(result.getInt("id"), result.getString("first_name"),
+                        result.getString("last_name")));
             }
             return all;
         });
