@@ -10,16 +10,16 @@
 </head>
 <body>
 
-     <h2>Simple Login Web Application using JSP/Servlet</h2>
-      
+      <div align="center">
+      <h2>Simple Login Web Application using JSP/Servlet</h2>
      <ul>
-        <li><a href="ServletStudent">students</a></li>
-        <li><a href="ServletGroup">group</a></li>
-        <li><a href="ServletSubject">subjects</a></li>
-        <li><a href="ServletTeacher">teachers</a>
+        <a href="ServletStudent">students</a><br>
+        <a href="ServletGroup">group</a><br>
+        <a href="ServletSubject">subjects</a><br>
+        <a href="ServletTeacher">teachers</a><br>
      </ul>
      
       <a href="<%= request.getRequestURI() %>">Try Again</a>
-
+	</div>
 </body>
 </html>
