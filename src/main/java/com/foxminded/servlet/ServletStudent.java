@@ -19,28 +19,33 @@ import lombok.extern.slf4j.Slf4j;
 @WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
     public ServletStudent() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String action = request.getParameter("action");
-        if (action != null) {
+    	
+            String action = request.getParameter("action");
+            
             try {
-                switch (action) {
-                case "/new":
+                switch (action == null ? "info" : action) {
+                case "new":
+                	log.info("new servlet");
+                    showNewForm(request, response);
+                    break;
+                case "insert":
+                	log.info("insert servlet");
                     addStudent(request, response);
                     break;
                 case "delete":
                     log.info("switch /delete");
                     deleteStudent(request, response);
                     break;
-                case "/edit":
+                case "edit":
                     editStudent(request, response);
                     break;
+                case"info":
                 default:
                     log.info("show list from switch metod in servlet");
                     showList(request, response);
@@ -49,15 +54,8 @@ public class ServletStudent extends HttpServlet {
             } catch (SQLException ex) {
                 throw new ServletException(ex);
             }
-        } else {
-            try {
-                showList(request, response);
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
         }
-    }
+    
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -91,8 +89,19 @@ public class ServletStudent extends HttpServlet {
     }
 
     private void addStudent(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-
+            throws IOException, ServletException,SQLException{
+    	String firstname = request.getParameter("firstname");
+    	String secondname = request.getParameter("secondname");  	
+    	StudentDao studentdao = new StudentDao();
+    	studentdao.create(new Student(firstname, secondname));
+    	response.sendRedirect("ServletStudent");
+    }
+    
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.
+        		getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
+        dispatcher.forward(request, response);
     }
 
 }

@@ -2,19 +2,32 @@ package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Student {
-    @NonNull
+    
     private int id;
-    private String firstName;
+    private String firstName;    
     private String secondName;
 
-    @Override
+    
+    public Student() {
+		super();
+	}
+
+	public Student(int id) {
+		super();
+		this.id = id;
+	}
+
+	public Student(String firstName, String secondName) {
+		super();
+		this.firstName = firstName;
+		this.secondName = secondName;
+	}
+
+	@Override
     public String toString() {
         return firstName + secondName;
     }
