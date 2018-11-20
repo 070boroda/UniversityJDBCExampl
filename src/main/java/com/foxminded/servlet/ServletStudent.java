@@ -27,26 +27,35 @@ public class ServletStudent extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getServletPath();
-
-        try {
-            switch (action) {
-            case "/new":
-                addStudent(request, response);
-                break;
-            case "/delete":
-                log.info(" switch /delete");
-                deleteStudent(request, response);
-                break;
-            case "/edit":
-                editStudent(request, response);
-                break;
-            default:
-                showList(request, response);
-                break;
+        String action = request.getParameter("action");
+        if (action != null) {
+            try {
+                switch (action) {
+                case "/new":
+                    addStudent(request, response);
+                    break;
+                case "delete":
+                    log.info("switch /delete");
+                    deleteStudent(request, response);
+                    break;
+                case "/edit":
+                    editStudent(request, response);
+                    break;
+                default:
+                    log.info("show list from switch metod in servlet");
+                    showList(request, response);
+                    break;
+                }
+            } catch (SQLException ex) {
+                throw new ServletException(ex);
             }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
+        } else {
+            try {
+                showList(request, response);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 
@@ -73,6 +82,7 @@ public class ServletStudent extends HttpServlet {
         StudentDao studentdao = new StudentDao();
         Student student = new Student(id);
         studentdao.delete(student);
+        response.sendRedirect("ServletStudent");
     }
 
     private void editStudent(HttpServletRequest request, HttpServletResponse response)

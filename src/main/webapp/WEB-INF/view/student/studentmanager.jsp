@@ -29,7 +29,7 @@
 					<td>
 					<a href="/edit?id=<c:out value='${student.id}' />">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value='${student.id}' />">Delete</a>                     
+                        <a href="ServletStudent?action=delete&id=<c:out value='${student.id}' />">Delete</a>                     
                     </td>
                     </tr> 
 			</c:forEach>
