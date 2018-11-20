@@ -11,7 +11,8 @@
 	<center>
 		<h1>Student Maneger</h1>
 		<h2>
-			<a href="ServletStudent?action=new">Add Student</a> <a href="/list">List Students</a>
+			<a href="ServletStudent?action=new">Add Student</a> <a href="/list">List
+				Students</a>
 		</h2>
 	</center>
 	<div align="center">
@@ -33,8 +34,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="<%= "index.jsp" %>">Go to start page</a>
+		<a href="<%="index.jsp"%>">Go to start page</a>
 	</div>
-
 </body>
 </html>

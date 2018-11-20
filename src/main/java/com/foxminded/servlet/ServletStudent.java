@@ -52,7 +52,6 @@ public class ServletStudent extends HttpServlet {
             }
         }
     
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	String firstname = request.getParameter("firstname");
@@ -91,21 +90,11 @@ public class ServletStudent extends HttpServlet {
             throws IOException, ServletException {
 
     }
-
-    private void addStudent(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException,SQLException{
-    	String firstname = request.getParameter("firstname");
-    	String secondname = request.getParameter("secondname");  	
-    	StudentDao studentdao = new StudentDao();
-    	studentdao.create(new Student(firstname, secondname));
-    	response.sendRedirect("ServletStudent");
-    }
-    
+   
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.
         		getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
         dispatcher.forward(request, response);
     }
-
 }
