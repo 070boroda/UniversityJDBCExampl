@@ -10,7 +10,7 @@
 <body>
 	<centre>
 	<h1>Add Student</h1>
-	<form action="ServletStudent">
+	<form action="ServletStudent" method="post">
 		First Name :<input type="text" name="firstname"><br>
 		Second Name :<input type="text" name="secondname"><br> <input
 			type="submit" value="Submit">

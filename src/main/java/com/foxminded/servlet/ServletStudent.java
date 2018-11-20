@@ -34,10 +34,6 @@ public class ServletStudent extends HttpServlet {
                 	log.info("new servlet");
                     showNewForm(request, response);
                     break;
-                case "insert":
-                	log.info("insert servlet");
-                    addStudent(request, response);
-                    break;
                 case "delete":
                     log.info("switch /delete");
                     deleteStudent(request, response);
@@ -59,7 +55,15 @@ public class ServletStudent extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+    	String firstname = request.getParameter("firstname");
+    	String secondname = request.getParameter("secondname");  	
+    	StudentDao studentdao = new StudentDao();
+    	try {
+			studentdao.create(new Student(firstname, secondname));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	response.sendRedirect("ServletStudent");
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response)
