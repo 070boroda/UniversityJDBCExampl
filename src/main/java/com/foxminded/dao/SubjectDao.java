@@ -1,18 +1,17 @@
-package main.java.com.foxminded.dao;
+package com.foxminded.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import main.java.com.foxminded.entity.Subject;;
+import com.foxminded.entity.Subject;
 
 public class SubjectDao extends AbstractDao<Integer, Subject> {
 
-    private final static String SQL_CREATE = "INSERT INTO subject (id,name) VALUES (DEFAULT,?);";
-    private final static String SQL_DELETE = "DELETE FROM subject WHERE name=?;";
-    private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE subject SET name =? WHERE id =?;";
-    private final static String SQL_GET_BY_ID = "SELECT * FROM subject WHERE id=?;";
-    private final static String SQL_GET_ALL = "SELECT * FROM subject;";
+    private final static String SQL_CREATE = "INSERT INTO subjects (id,name) VALUES (DEFAULT,?);";
+    private final static String SQL_DELETE = "DELETE FROM subjects WHERE name=?;";
+    private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE subjects SET name =? WHERE id =?;";
+    private final static String SQL_GET_BY_ID = "SELECT * FROM subjects WHERE id=?;";
+    private final static String SQL_GET_ALL = "SELECT * FROM subjects;";
     private Executor executor;
 
     public SubjectDao() {

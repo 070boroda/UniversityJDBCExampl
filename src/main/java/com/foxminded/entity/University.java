@@ -1,16 +1,10 @@
-package main.java.com.foxminded.entity;
+package com.foxminded.entity;
 
 public class University {
 
     public void createUniversity() {
         Group group1 = new Group("0001");
         Group group2 = new Group("0002");
-
-        group1.addStudent(new Student("Vladimir", "Putin"));
-        group1.addStudent(new Student("Sashka", "Lukash"));
-        group2.addStudent(new Student("Dimka", "Medvedev"));
-        group2.addStudent(new Student("Angelka", "Merkel"));
-        group2.addStudent(new Student("Donald", "Tramp"));
 
         Teacher teacherAmerica = new Teacher(1, "Capitan", "America");
         Teacher teacherSpider = new Teacher(2, "Spider", "Man");

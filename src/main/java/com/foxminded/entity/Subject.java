@@ -1,4 +1,4 @@
-package main.java.com.foxminded.entity;
+package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

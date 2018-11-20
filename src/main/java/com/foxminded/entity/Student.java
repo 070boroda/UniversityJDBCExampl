@@ -1,19 +1,17 @@
-package main.java.com.foxminded.entity;
+package com.foxminded.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class Student {
-
+    @NonNull
     private int id;
-    @NonNull
     private String firstName;
-    @NonNull
     private String secondName;
 
     @Override

@@ -1,7 +1,7 @@
-package main.java.com.foxminded.dao;
+package com.foxminded.dao;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,13 +45,16 @@ public class Executor {
     public static Connection getConnection() {
         Properties property = new Properties();
         log.info("Start connection");
-        try (FileInputStream fin = new FileInputStream("config.properties")) {
-            property.load(fin);
+        try {
+
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classloader.getResourceAsStream("config.properties");
+            property.load(input);
             String url = property.getProperty("db.host");
             String name = property.getProperty("db.login");
             String password = property.getProperty("db.pas");
             return DriverManager.getConnection(url, name, password);
-        } catch (RuntimeException | IOException | SQLException e) {
+        } catch (RuntimeException | SQLException | IOException e) {
             log.error("Connection is FALSE");
             e.printStackTrace();
         }
