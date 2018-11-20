@@ -9,7 +9,14 @@
 </head>
 <body>
 	<centre>
-	<h1>Add Student</h1>
+	<h2>
+	<c:if test="${student != null}">
+          Edit Student
+    </c:if>
+	<c:if test="${student == null}">
+           Add Student
+    </c:if>
+	</h2>
 	<form action="ServletStudent" method="post">
 		First Name :<input type="text" name="firstname"><br>
 		Second Name :<input type="text" name="secondname"><br> <input

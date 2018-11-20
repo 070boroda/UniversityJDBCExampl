@@ -39,7 +39,8 @@ public class ServletStudent extends HttpServlet {
                     deleteStudent(request, response);
                     break;
                 case "edit":
-                    editStudent(request, response);
+                	log.info("switch edit");
+                    showEditForm(request, response);
                     break;
                 case"info":
                 default:
@@ -85,16 +86,23 @@ public class ServletStudent extends HttpServlet {
         studentdao.delete(student);
         response.sendRedirect("ServletStudent");
     }
-
-    private void editStudent(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-
-    }
-   
+ 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.
         		getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
         dispatcher.forward(request, response);
+    }
+    
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        StudentDao studentdao = new StudentDao();
+        Student student = studentdao.getById(id);
+        RequestDispatcher dispatcher = request.
+        		getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
+        request.setAttribute("student", student);
+        dispatcher.forward(request, response);
+ 
     }
 }
