@@ -18,9 +18,12 @@
     </c:if>
 	</h2>
 	<form action="ServletStudent" method="post">
-		First Name :<input type="text" name="firstname"><br>
-		Second Name :<input type="text" name="secondname"><br> <input
-			type="submit" value="Submit">
+	<c:if test="${student != null}">
+	<input type="hidden" name="id" value="<c:out value='${student.id}' />" />
+	</c:if> 
+		First Name :<input type="text" name="firstname"   value="<c:out value='${student.firstName}' />" /><br>
+		Second Name :<input type="text" name="secondname" value="<c:out value='${student.secondName}' />" /><br> 
+		<input type="submit" value="Submit">
 	</form>
 	</centre>
 </body>

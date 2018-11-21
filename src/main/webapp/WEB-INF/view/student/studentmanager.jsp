@@ -27,7 +27,8 @@
 					<td><c:out value="${student.id}"></c:out>
 					<td><c:out value="${student.firstName}"></c:out>
 					<td><c:out value="${student.secondName}"></c:out>
-					<td><a href="ServletStudent?action=edit&id=<c:out value='${student.id}' />">Edit</a>
+					<td><a
+						href="ServletStudent?action=edit&id=<c:out value='${student.id}' />">Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
 						href="ServletStudent?action=delete&id=<c:out value='${student.id}' />">Delete</a>
 					</td>
