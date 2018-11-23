@@ -19,9 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 @WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	StudentDao studentdao = new StudentDao();
 	public ServletStudent() {
 		super();
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -59,7 +60,7 @@ public class ServletStudent extends HttpServlet {
 		if (request.getParameter("id") == null || request.getParameter("id") == "") {
 			String firstname = request.getParameter("firstname");
 			String secondname = request.getParameter("secondname");
-			StudentDao studentdao = new StudentDao();
+		
 			try {
 				studentdao.create(new Student(firstname, secondname));
 			} catch (SQLException e) {
@@ -70,8 +71,7 @@ public class ServletStudent extends HttpServlet {
 
 			String firstname = request.getParameter("firstname");
 			String secondname = request.getParameter("secondname");
-			Integer id = Integer.parseInt(request.getParameter("id"));
-			StudentDao studentdao = new StudentDao();
+			Integer id = Integer.parseInt(request.getParameter("id"));			
 			try {
 				studentdao.update(new Student(firstname, secondname), id);
 			} catch (SQLException e) {
@@ -82,8 +82,7 @@ public class ServletStudent extends HttpServlet {
 	}
 
 	private void showList(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException, SQLException {
-		StudentDao studentdao = new StudentDao();
+			throws IOException, ServletException, SQLException {		
 		List<Student> list = null;
 		list = studentdao.getAll();
 		request.setAttribute("liststudent", list);
@@ -96,7 +95,6 @@ public class ServletStudent extends HttpServlet {
 			throws IOException, ServletException, SQLException {
 		log.info("start deleteStudent in servlet" + this.getServletInfo());
 		int id = Integer.parseInt(request.getParameter("id"));
-		StudentDao studentdao = new StudentDao();
 		Student student = new Student(id);
 		studentdao.delete(student);
 		response.sendRedirect("ServletStudent");
@@ -111,11 +109,9 @@ public class ServletStudent extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		StudentDao studentdao = new StudentDao();
 		Student student = studentdao.getById(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
 		request.setAttribute("student", student);
 		dispatcher.forward(request, response);
-
 	}
 }

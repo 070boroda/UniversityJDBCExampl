@@ -1,20 +1,33 @@
 package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
-@Data
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 @AllArgsConstructor
-@RequiredArgsConstructor
+@Data
+@NoArgsConstructor
 @ToString(includeFieldNames = false)
 public class Teacher {
+	
     private int id;
-    @NonNull
+    
     private String firstName;
-    @NonNull
+    
     private String secondName;
+
+	public Teacher(String firstName, String secondName) {
+		super();
+		this.firstName = firstName;
+		this.secondName = secondName;
+	}
+
+	public Teacher(int id) {
+		super();
+		this.id = id;
+	}
+    
+    
 
 }
