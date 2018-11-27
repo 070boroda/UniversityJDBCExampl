@@ -11,8 +11,7 @@
 	<center>
 		<h1>Teacher Manager</h1>
 		<h2>
-			<a href="ServletTeacher?action=new">Add Teacher</a> <a href="/list">List
-				Students</a>
+			<a href="ServletTeacher?action=new">Add Teacher</a>
 		</h2>
 	</center>
 	<div align="center">

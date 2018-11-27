@@ -11,8 +11,7 @@
 	<center>
 		<h1>Student Maneger</h1>
 		<h2>
-			<a href="ServletStudent?action=new">Add Student</a> <a href="/list">List
-				Students</a>
+			<a href="ServletStudent?action=new">Add Student</a> 
 		</h2>
 	</center>
 	<div align="center">

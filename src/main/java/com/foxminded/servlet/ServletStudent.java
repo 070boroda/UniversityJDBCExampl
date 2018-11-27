@@ -18,100 +18,95 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	StudentDao studentdao = new StudentDao();
-	public ServletStudent() {
-		super();
-		
-	}
+    StudentDao studentdao = new StudentDao();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		String action = request.getParameter("action");
+        String action = request.getParameter("action");
 
-		try {
-			switch (action == null ? "info" : action) {
-			case "new":
-				log.info("new servlet");
-				showNewForm(request, response);
-				break;
-			case "delete":
-				log.info("switch /delete");
-				deleteStudent(request, response);
-				break;
-			case "edit":
-				log.info("switch edit");
-				showEditForm(request, response);
-				break;
-			case "info":
-			default:
-				log.info("show list from switch metod in servlet");
-				showList(request, response);
-				break;
-			}
-		} catch (SQLException ex) {
-			throw new ServletException(ex);
-		}
-	}
+        try {
+            switch (action == null ? "info" : action) {
+            case "new":
+                log.info("new servlet");
+                showNewForm(request, response);
+                break;
+            case "delete":
+                log.info("switch /delete");
+                deleteStudent(request, response);
+                break;
+            case "edit":
+                log.info("switch edit");
+                showEditForm(request, response);
+                break;
+            case "info":
+            default:
+                log.info("show list from switch metod in servlet");
+                showList(request, response);
+                break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		if (request.getParameter("id") == null || request.getParameter("id") == "") {
-			String firstname = request.getParameter("firstname");
-			String secondname = request.getParameter("secondname");
-		
-			try {
-				studentdao.create(new Student(firstname, secondname));
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
+            String firstname = request.getParameter("firstname");
+            String secondname = request.getParameter("secondname");
 
-		} else {
+            try {
+                studentdao.create(new Student(firstname, secondname));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-			String firstname = request.getParameter("firstname");
-			String secondname = request.getParameter("secondname");
-			Integer id = Integer.parseInt(request.getParameter("id"));			
-			try {
-				studentdao.update(new Student(firstname, secondname), id);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		response.sendRedirect("ServletStudent");
-	}
+        } else {
 
-	private void showList(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException, SQLException {		
-		List<Student> list = null;
-		list = studentdao.getAll();
-		request.setAttribute("liststudent", list);
-		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/WEB-INF/view/student/studentmanager.jsp");
-		dispatcher.forward(request, response);
-	}
+            String firstname = request.getParameter("firstname");
+            String secondname = request.getParameter("secondname");
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            try {
+                studentdao.update(new Student(firstname, secondname), id);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        response.sendRedirect("ServletStudent");
+    }
 
-	private void deleteStudent(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException, SQLException {
-		log.info("start deleteStudent in servlet" + this.getServletInfo());
-		int id = Integer.parseInt(request.getParameter("id"));
-		Student student = new Student(id);
-		studentdao.delete(student);
-		response.sendRedirect("ServletStudent");
-	}
+    private void showList(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException, SQLException {
+        List<Student> list = null;
+        list = studentdao.getAll();
+        request.setAttribute("liststudent", list);
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/view/student/studentmanager.jsp");
+        dispatcher.forward(request, response);
+    }
 
-	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
-		dispatcher.forward(request, response);
-	}
+    private void deleteStudent(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException, SQLException {
+        log.info("start deleteStudent in servlet" + this.getServletInfo());
+        int id = Integer.parseInt(request.getParameter("id"));
+        Student student = new Student(id);
+        studentdao.delete(student);
+        response.sendRedirect("ServletStudent");
+    }
 
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		Student student = studentdao.getById(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
-		request.setAttribute("student", student);
-		dispatcher.forward(request, response);
-	}
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Student student = studentdao.getById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
+        request.setAttribute("student", student);
+        dispatcher.forward(request, response);
+    }
 }
