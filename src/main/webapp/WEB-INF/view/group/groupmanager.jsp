@@ -9,27 +9,24 @@
 </head>
 <body>
 	<center>
-		<h1>Student Maneger</h1>
+		<h1>Group Manager</h1>
 		<h2>
-			<a href="ServletStudent?action=new">Add Student</a> 
+			<a href="ServletGroup?action=new">Add Group</a> 
 		</h2>
 	</center>
 	<div align="center">
 		<table border="1px">
 			<tr>
 				<th>Id</th>
-				<th>First Name</th>
-				<th>Second Name</th>
+				<th>Name</th>
 			</tr>
-			<c:forEach var="student" items="${liststudent}">
+			<c:forEach var="group" items="${listgroup}">
 				<tr>
-					<td><c:out value="${student.id}"></c:out>
-					<td><c:out value="${student.firstName}"></c:out>
-					<td><c:out value="${student.secondName}"></c:out>
-					<td><a
-						href="ServletStudent?action=edit&id=<c:out value='${student.id}' />">Edit</a>
-						&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="ServletStudent?action=delete&id=<c:out value='${student.id}' />">Delete</a>
+					<td><c:out value="${group.id}"></c:out>
+					<td><c:out value="${group.name}"></c:out>
+					<td><a href="ServletGroup?action=edit&id=<c:out value='${group.id}' />">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; 
+						<a href="ServletGroup?action=delete&id=<c:out value='${group.id}' />">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>

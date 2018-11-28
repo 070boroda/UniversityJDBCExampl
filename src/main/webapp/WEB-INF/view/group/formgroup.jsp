@@ -5,24 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New Student</title>
+<title>New Group</title>
 </head>
 <body>
 	<centre>
 	<h2>
-	<c:if test="${student != null}">
-          Edit Student
+	<c:if test="${group != null}">
+          Edit Group
     </c:if>
-	<c:if test="${student == null}">
-           Add Student
+	<c:if test="${group == null}">
+           Add Group
     </c:if>
 	</h2>
-	<form action="ServletStudent" method="post">
-	<c:if test="${student != null}">
-	<input type="hidden" name="id" value="<c:out value='${student.id}' />" />
+	<form action="ServletGroup" method="post">
+	<c:if test="${group != null}">
+	<input type="hidden" name="id" value="<c:out value='${group.id}' />" />
 	</c:if> 
-		First Name :<input type="text" name="firstname"   value="<c:out value='${student.firstName}' />" /><br>
-		Second Name :<input type="text" name="secondname" value="<c:out value='${student.secondName}' />" /><br> 
+		Name :<input type="text" name="name"   value="<c:out value='${group.name}' />" /><br>
 		<input type="submit" value="Submit">
 	</form>
 	</centre>

@@ -11,11 +11,13 @@
 
 <table border="1px">
  <tr>
-     <th>Second Name</th>
+ 	 <th>id</th>
+     <th>Name Group</th>
  </tr>
 
 <c:forEach var="value" items="${list}">
     <tr>
+    <td><c:out value="${value.id}"/></td>
     <td><c:out value="${value.name}"/></td>
     </tr>
 </c:forEach>
