@@ -13,5 +13,9 @@ CREATE TABLE IF NOT EXISTS groups (
 id SERIAL PRIMARY KEY,  
 name varchar(15));
 
+CREATE TABLE IF NOT EXISTS subjects (
+id SERIAL PRIMARY KEY,  
+name varchar(15));
+
 
 
