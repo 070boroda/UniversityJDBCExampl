@@ -9,9 +9,9 @@
 </head>
 <body>
 	<center>
-		<h1>Group Manager</h1>
+		<h1>Subject Manager</h1>
 		<h2>
-			<a href="ServletGroup?action=new">Add Group</a>
+			<a href="ServletSubject?action=new">Add Subject</a>
 		</h2>
 	</center>
 	<div align="center">
@@ -20,14 +20,14 @@
 				<th>Id</th>
 				<th>Name</th>
 			</tr>
-			<c:forEach var="group" items="${listgroup}">
+			<c:forEach var="subject" items="${listsubject}">
 				<tr>
-					<td><c:out value="${group.id}"></c:out>
-					<td><c:out value="${group.name}"></c:out>
+					<td><c:out value="${subject.id}"></c:out>
+					<td><c:out value="${subject.name}"></c:out>
 					<td><a
-						href="ServletGroup?action=edit&id=<c:out value='${group.id}' />">Edit</a>
+						href="ServletSubject?action=edit&id=<c:out value='${subject.id}' />">Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="ServletGroup?action=delete&id=<c:out value='${group.id}' />">Delete</a>
+						href="ServletSubject?action=delete&id=<c:out value='${subject.id}' />">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>

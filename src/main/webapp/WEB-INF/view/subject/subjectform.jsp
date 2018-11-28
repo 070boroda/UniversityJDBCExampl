@@ -10,19 +10,19 @@
 <body>
 	<centre>
 	<h2>
-		<c:if test="${group != null}">
-          Edit Group
+		<c:if test="${subject != null}">
+          Edit Subject
     </c:if>
-		<c:if test="${group == null}">
-           Add Group
+		<c:if test="${subject == null}">
+           Add Subject
     </c:if>
 	</h2>
-	<form action="ServletGroup" method="post">
-		<c:if test="${group != null}">
-			<input type="hidden" name="id" value="<c:out value='${group.id}' />" />
+	<form action="ServletSubject" method="post">
+		<c:if test="${subject != null}">
+			<input type="hidden" name="id" value="<c:out value='${subject.id}' />" />
 		</c:if>
 		Name :<input type="text" name="name"
-			value="<c:out value='${group.name}' />" /><br> <input
+			value="<c:out value='${subject.name}' />" /><br> <input
 			type="submit" value="Submit">
 	</form>
 	</centre>
