@@ -47,12 +47,7 @@ public class Schedule {
             if (schedule.get(day).containsKey(number)) {
                 List<Field> temp = schedule.get(day).get(number);
                 for (Field field : temp) {
-                    for (Student studTemp : field.getGroupNumber().getStudents())
-                        if (student.equals(studTemp)) {
-                            System.out.printf("%s", number.getDescription());
-                            System.out.printf("%S \n", field);
-                        }
-
+                 
                 }
             }
         }
