@@ -55,7 +55,7 @@ public class ServletSubject extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
+		if (request.getParameter("id") == null) {
 			String name = request.getParameter("name");
 
 			try {
@@ -83,7 +83,8 @@ public class ServletSubject extends HttpServlet {
 		List<Subject> list = null;
 		list = subjectdao.getAll();
 		request.setAttribute("listsubject", list);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/subject/subjectmanager.jsp");
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher("/WEB-INF/view/subject/subjectmanager.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -18,13 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @WebServlet(name = "ServletTeacher", urlPatterns = { "/ServletTeacher" })
 public class ServletTeacher extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	TeacherDao teacherdao = new TeacherDao();
-
-	public ServletTeacher() {
-		super();
-
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -58,7 +52,7 @@ public class ServletTeacher extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
+		if (request.getParameter("id") == null) {
 			String firstname = request.getParameter("firstname");
 			String secondname = request.getParameter("secondname");
 
