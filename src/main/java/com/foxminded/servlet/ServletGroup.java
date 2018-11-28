@@ -52,7 +52,7 @@ public class ServletGroup extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
+		if (request.getParameter("id") == null) {
 			String name = request.getParameter("name");
 
 			try {
