@@ -11,7 +11,7 @@
 	<center>
 		<h1>Group Manager</h1>
 		<h2>
-			<a href="ServletGroup?action=new">Add Group</a> 
+			<a href="ServletGroup?action=new">Add Group</a>
 		</h2>
 	</center>
 	<div align="center">
@@ -24,9 +24,10 @@
 				<tr>
 					<td><c:out value="${group.id}"></c:out>
 					<td><c:out value="${group.name}"></c:out>
-					<td><a href="ServletGroup?action=edit&id=<c:out value='${group.id}' />">Edit</a>
-						&nbsp;&nbsp;&nbsp;&nbsp; 
-						<a href="ServletGroup?action=delete&id=<c:out value='${group.id}' />">Delete</a>
+					<td><a
+						href="ServletGroup?action=edit&id=<c:out value='${group.id}' />">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; <a
+						href="ServletGroup?action=delete&id=<c:out value='${group.id}' />">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
