@@ -15,7 +15,7 @@ public class Student {
     public Student() {
 		super();
 	}
-
+    
 	public Student(int id) {
 		super();
 		this.id = id;
@@ -62,5 +62,12 @@ public class Student {
         result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
         return result;
     }
+
+	public Student(int id, String firstName, String secondName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.secondName = secondName;
+	}
 
 }

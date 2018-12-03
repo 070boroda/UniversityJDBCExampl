@@ -40,7 +40,7 @@ public class StudentDao extends AbstractDao<Integer, Student> {
             List<Student> all = new ArrayList<>();
             while (result.next()) {
                 all.add(new Student(result.getInt("id"), result.getString("first_name"),
-                        result.getString("last_name")));
+                        result.getString("last_name"), result.getInt("id_group")));
             }
             return all;
         });
