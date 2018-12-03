@@ -3,6 +3,7 @@ package com.foxminded.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.foxminded.entity.Student;
 
 public class StudentDao extends AbstractDao<Integer, Student> {
@@ -40,8 +41,8 @@ public class StudentDao extends AbstractDao<Integer, Student> {
         return executor.execQuery(SQL_GET_ALL, result -> {
             List<Student> all = new ArrayList<>();
             while (result.next()) {
-                all.add(new Student(result.getInt("id"), result.getString("first_name"),
-                        result.getString("last_name"), result.getInt("id_group")));
+                all.add(new Student(result.getInt("id"), result.getString("first_name"), result.getString("last_name"),
+                        result.getInt("id_group")));
             }
             return all;
         });
@@ -50,5 +51,9 @@ public class StudentDao extends AbstractDao<Integer, Student> {
     @Override
     public void update(Student entity, Integer id) throws SQLException {
         executor.execUpdate(SQL_UPDATE_NAME_BY_ID, entity.getFirstName(), entity.getSecondName(), id);
+    }
+
+    public void updateGroupId(Student entity, Integer id) throws SQLException {
+        executor.execUpdate(SQL_UPDATE_GROUP_BY_ID, entity.getIdgroup(), id);
     }
 }

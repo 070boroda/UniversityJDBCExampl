@@ -11,39 +11,42 @@
 	<center>
 		<h1>Add Student to Group</h1>
 	</center>
-	<form action="AddGroupServlet" metod = "post">
-	
 	<div align="center">
-		<table border="1px">
-			<tr>
-				<th>Id</th>
-				<th>First Name</th>
-				<th>Second Name</th>
-				<th>Group Name</th>
-			</tr>
-			<c:forEach var="student" items="${liststudent}">
-						
+		<form action="AddGroupServlet" method="post">
+			<table border="1px">
 				<tr>
-					<td><c:out value="${student.id}"></c:out>
-			        <td><c:out value="${student.firstName}"></c:out>
-					<td><c:out value="${student.secondName}"></c:out>
-					<c:if test="${student.idgroup == 0 }">                  
-					<td><select>
-					   
-                        <c:forEach var="group" items="${listgroup}">
-                        <option>
-                                <c:out value="${group.name}"></c:out>
-                        </option>
-                        </c:forEach>                                             					       					
-					   </select>						
-					</td>
-					</c:if> 					
+					<th>First Name</th>
+					<th>Second Name</th>
+					<th>Group Name</th>
+					<th>Change Group</th>
+					<th>Group ID</th>
 				</tr>
+				<c:forEach var="student" items="${liststudent}">
+
+					<tr>
+						<input type="hidden" name="id" value="<c:out value='${student.id}' />" />
+						<td><c:out value="${student.firstName}"></c:out>
+						<td><c:out value="${student.secondName}"></c:out> <c:forEach
+								var="groupname" items="${listgroup}">
+								<c:if test="${student.idgroup == groupname.id }">								
+									
+									<td><c:out value="${groupname.name}"></c:out>
+								</c:if>
+							</c:forEach>
+						<td><select id="id" name="groupid">
+								<option selected></option>
+								<c:forEach var="group" items="${listgroup}">
+									<option value="${group.id}">${group.name}</option>
+								</c:forEach>
+						</select></td>
+					</tr>
 				</c:forEach>
-		</table>
-		<a href="<%="index.jsp"%>">Go to start page</a>
-		<p><input type="submit" value="Submit"></p>
+			</table>
+			<a href="<%="index.jsp"%>">Go to start page</a>
+			<p>
+				<input type="submit" value="Submit">
+			</p>
+		</form>
 	</div>
-	</form>
 </body>
 </html>
