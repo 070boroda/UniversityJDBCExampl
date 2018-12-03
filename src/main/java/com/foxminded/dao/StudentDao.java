@@ -11,6 +11,7 @@ public class StudentDao extends AbstractDao<Integer, Student> {
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE students SET first_name =?, last_name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM students WHERE id=?;";
     private final static String SQL_GET_ALL = "SELECT * FROM students;";
+    private final static String SQL_UPDATE_GROUP_BY_ID = "UPDATE students SET id_group =? WHERE id =?;";
     private Executor executor;
 
     public StudentDao() {
