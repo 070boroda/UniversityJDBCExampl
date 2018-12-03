@@ -19,10 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 @WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
 	StudentDao studentdao = new StudentDao();
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setContentType ("text/html; charset=UTF-8");
+		request.setCharacterEncoding ("UTF-8");
 		String action = request.getParameter("action");
 
 		try {
@@ -52,6 +53,8 @@ public class ServletStudent extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType ("text/html; charset=UTF-8");
+		request.setCharacterEncoding ("UTF-8");
 		if (request.getParameter("id") == null) {
 			String firstname = request.getParameter("firstname");
 			String secondname = request.getParameter("secondname");

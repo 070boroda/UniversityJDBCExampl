@@ -17,7 +17,7 @@
         <a href="ServletGroup">Group</a><br>
         <a href="ServletSubject">Subjects</a><br>
         <a href="ServletTeacher">Teachers</a><br>
-     
+        <a href="AddGroupServlet">Add Student to Group</a><br>
      
       <a href="<%= request.getRequestURI() %>">Try Again</a>
 	</div>
