@@ -20,14 +20,20 @@
 				<th>Id</th>
 				<th>First Name</th>
 				<th>Second Name</th>
+				<th>Group Name</th>
 			</tr>
 			<c:forEach var="student" items="${liststudent}">
 				<tr>
 					<td><c:out value="${student.id}"></c:out>
 					<td><c:out value="${student.firstName}"></c:out>
 					<td><c:out value="${student.secondName}"></c:out>
+					<td><c:forEach var="group" items="${listgroup}">
+					<c:if test="${group.id eq student.idgroup}">
+					<c:out value="${group.name}"></c:out>
+					</c:if>
+					</c:forEach>										
 					<td><a
-						href="ServletStudent?action=edit&id=<c:out value='${student.id}' />">Edit</a>
+						href="ServletStudent?action=edit&id=<c:out value='${student.id}'/>">Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
 						href="ServletStudent?action=delete&id=<c:out value='${student.id}' />">Delete</a>
 					</td>

@@ -70,4 +70,13 @@ public class Student {
 		this.secondName = secondName;
 	}
 
+	public Student(String firstName, String secondName, int idgroup) {
+		super();
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.idgroup = idgroup;
+	}
+	
+	
+
 }

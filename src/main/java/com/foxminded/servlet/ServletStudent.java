@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.foxminded.dao.GroupDao;
 import com.foxminded.dao.StudentDao;
 import com.foxminded.entity.Student;
 
@@ -19,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
 	StudentDao studentdao = new StudentDao();
-	
+	GroupDao groupdao = new GroupDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType ("text/html; charset=UTF-8");
@@ -58,9 +59,9 @@ public class ServletStudent extends HttpServlet {
 		if (request.getParameter("id") == null) {
 			String firstname = request.getParameter("firstname");
 			String secondname = request.getParameter("secondname");
-
+			Integer groupid = Integer.parseInt(request.getParameter("groupid"));
 			try {
-				studentdao.create(new Student(firstname, secondname));
+				studentdao.create(new Student(firstname, secondname,groupid));
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -70,8 +71,9 @@ public class ServletStudent extends HttpServlet {
 			String firstname = request.getParameter("firstname");
 			String secondname = request.getParameter("secondname");
 			Integer id = Integer.parseInt(request.getParameter("id"));
+			Integer groupid = Integer.parseInt(request.getParameter("groupid"));
 			try {
-				studentdao.update(new Student(firstname, secondname), id);
+				studentdao.update(new Student(firstname, secondname, groupid), id);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -81,9 +83,10 @@ public class ServletStudent extends HttpServlet {
 
 	private void showList(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, SQLException {
-		List<Student> list = null;
-		list = studentdao.getAll();
-		request.setAttribute("liststudent", list);
+		List<Student> liststudent = null;
+		liststudent = studentdao.getAll();
+		request.setAttribute("liststudent", liststudent);
+		request.setAttribute("listgroup", groupdao.getAll());
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/WEB-INF/view/student/studentmanager.jsp");
 		dispatcher.forward(request, response);
@@ -101,6 +104,11 @@ public class ServletStudent extends HttpServlet {
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
+		try {
+			request.setAttribute("grouplist", groupdao.getAll());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		dispatcher.forward(request, response);
 	}
 
@@ -110,6 +118,7 @@ public class ServletStudent extends HttpServlet {
 		Student student = studentdao.getById(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/student/formstudent.jsp");
 		request.setAttribute("student", student);
+		request.setAttribute("grouplist", groupdao.getAll());
 		dispatcher.forward(request, response);
 	}
 }
