@@ -13,11 +13,11 @@
       <div align="center">
       <h2>Simple Login Web Application using JSP/Servlet</h2>
      
-        <a href="<%= "ServletStudent" %>">Student</a><br>
+        <a href="ServletStudent">Student</a><br>
         <a href="ServletGroup">Group</a><br>
         <a href="ServletSubject">Subjects</a><br>
         <a href="ServletTeacher">Teachers</a><br>
-        <a href="AddGroupServlet">Add Student to Group</a><br>
+        <a href="ScheduleServlet">Schedule</a><br>
      
       <a href="<%= request.getRequestURI() %>">Try Again</a>
 	</div>
