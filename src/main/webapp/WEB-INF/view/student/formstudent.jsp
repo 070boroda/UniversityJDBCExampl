@@ -28,7 +28,7 @@
 			value="<c:out value='${student.secondName}' />" /><br>
 		        <td><select id="id" name="groupid">
 				    <option selected></option>
-				    <c:forEach var="group" items="${grouplist}">
+				<c:forEach var="group" items="${grouplist}">
 					<option value="${group.id}">${group.name}</option>
 				</c:forEach>
 		            </select></td> <input type="submit" value="Submit">

@@ -9,17 +9,19 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Field {
+
+    public Field(int id) {
+        super();
+        this.id = id;
+    }
+
+    private int id;
+    @NonNull
+    private String dayLesson;
+    @NonNull
+    private String numberLesson;
     @NonNull
     private Subject subject;
     @NonNull
-    private Group groupNumber;
-    @NonNull
-    private Teacher teacher;
-    @NonNull
-    private LectureHall lectureHall;
-
-    @Override
-    public String toString() {
-        return " " + subject + " group: " + groupNumber + " teacher:  " + teacher + " in  " + lectureHall + " ";
-    }
+    private Group group;
 }

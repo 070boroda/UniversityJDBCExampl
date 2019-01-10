@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.foxminded.dao.FieldDao;
 import com.foxminded.dao.GroupDao;
+import com.foxminded.dao.SubjectDao;
 import com.foxminded.entity.DayOfWeek;
+import com.foxminded.entity.NumberLesson;
 import com.foxminded.entity.Student;
 
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +48,29 @@ public class ScheduleServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        String day = request.getParameter("day");
+        Integer groupid = Integer.parseInt(request.getParameter("groupid"));
+        FieldDao fieldDao = new FieldDao();
+        GroupDao groupDao = new GroupDao();
+        SubjectDao subjectDao = new SubjectDao();
+        try {
+            request.setAttribute("fieldlist", fieldDao.getAll());
+            request.setAttribute("grouplist", groupDao.getAll());
+            request.setAttribute("subjectlist", subjectDao.getAll());
+        } catch (SQLException e) {
+            log.info("getAll" + getServletName());
+            e.printStackTrace();
+        }
+
+        request.setAttribute("daylist", DayOfWeek.values());
+        request.setAttribute("numberlessonlist", NumberLesson.values());
+        request.setAttribute("day", day);
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/view/schedule/fieldmanager.jsp");
+        dispatcher.forward(request, response);
 
     }
 

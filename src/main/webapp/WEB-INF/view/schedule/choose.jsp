@@ -19,7 +19,6 @@
 					     <option value="${group.id}">${group.name}</option>
 				         </c:forEach>	
 	                     </select>
-						 <input type="submit" value="Submit">
 						 
 						 <select id="id" name="day">
 						 <option selected></option>
@@ -27,6 +26,8 @@
 					     <option value="${day}">${day}</option>
 				         </c:forEach>
 						 </select>
+						 
+						 <input type="submit" value="Submit">
 	</form>	
 	<a href="<%="index.jsp"%>">Back</a>
     </div>
