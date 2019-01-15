@@ -25,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ScheduleServlet extends HttpServlet {
 
     GroupDao groupdao = new GroupDao();
+    SubjectDao subjectdao = new SubjectDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +35,9 @@ public class ScheduleServlet extends HttpServlet {
 
         try {
             switch (action == null ? "info" : action) {
-            case "":
+            case "new":
+                log.info("new servlet");
+                showNewForm(request, response);
                 break;
             default:
                 log.info("show list from switch metod in servlet");
@@ -50,28 +53,28 @@ public class ScheduleServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
 
-        String day = request.getParameter("day");
-        Integer groupid = Integer.parseInt(request.getParameter("groupid"));
-        FieldDao fieldDao = new FieldDao();
-        GroupDao groupDao = new GroupDao();
-        SubjectDao subjectDao = new SubjectDao();
-        try {
-            request.setAttribute("fieldlist", fieldDao.getAll());
-            request.setAttribute("grouplist", groupDao.getAll());
-            request.setAttribute("subjectlist", subjectDao.getAll());
-        } catch (SQLException e) {
-            log.info("getAll" + getServletName());
-            e.printStackTrace();
+        if ("choose".equals(action)) {
+            String day = request.getParameter("day");
+            Integer groupid = Integer.parseInt(request.getParameter("groupid"));
+            FieldDao fieldDao = new FieldDao();
+            GroupDao groupDao = new GroupDao();
+            SubjectDao subjectDao = new SubjectDao();
+            try {
+                request.setAttribute("fieldlist", fieldDao.getAll());
+                request.setAttribute("group", groupDao.getById(groupid));
+                request.setAttribute("subjectlist", subjectDao.getAll());
+                request.setAttribute("day", day);
+            } catch (SQLException e) {
+                log.info("getAll" + getServletName());
+                e.printStackTrace();
+            }
+
+            RequestDispatcher dispatcher = getServletContext()
+                    .getRequestDispatcher("/WEB-INF/view/schedule/fieldmanager.jsp");
+            dispatcher.forward(request, response);
         }
-
-        request.setAttribute("daylist", DayOfWeek.values());
-        request.setAttribute("numberlessonlist", NumberLesson.values());
-        request.setAttribute("day", day);
-        RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/WEB-INF/view/schedule/fieldmanager.jsp");
-        dispatcher.forward(request, response);
-
     }
 
     private void showChooseList(HttpServletRequest request, HttpServletResponse response)
@@ -82,4 +85,17 @@ public class ScheduleServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setAttribute("day", request.getAttribute("day"));
+        try {
+            request.setAttribute("grouplist", groupdao.getAll());
+            request.setAttribute("subjectlist", subjectdao.getAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/schedule/choose.jsp");
+        dispatcher.forward(request, response);
+    }
 }

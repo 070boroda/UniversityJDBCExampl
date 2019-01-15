@@ -12,10 +12,10 @@
 	<h2>
 		<c:if test="${group != null}">
           Edit Group
-    </c:if>
+        </c:if>
 		<c:if test="${group == null}">
            Add Group
-    </c:if>
+        </c:if>
 	</h2>
 	<form action="ServletGroup" method="post">
 		<c:if test="${group != null}">

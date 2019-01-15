@@ -11,8 +11,10 @@
 <body>
     <div align="center">
 	<h1>Schedule</h1>
-	<h2>Choose day and group</h2>
-	<form action="ScheduleServlet" method="post">
+	<h2>
+	    Choose day and group     
+	    </h2>
+	    <form action="ScheduleServlet?action=choose" method="post" >
 	      Choose Groupe: <select id="id" name="groupid">
 	      				 <option selected></option>
 				         <c:forEach var="group" items="${grouplist}">

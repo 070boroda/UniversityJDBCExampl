@@ -19,7 +19,7 @@ public class Field {
     @NonNull
     private String dayLesson;
     @NonNull
-    private String numberLesson;
+    private int numberLesson;
     @NonNull
     private Subject subject;
     @NonNull
