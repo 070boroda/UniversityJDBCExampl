@@ -1,5 +1,6 @@
 package com.foxminded.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Field {
 
     public Field(int id) {
@@ -21,7 +23,7 @@ public class Field {
     @NonNull
     private int numberLesson;
     @NonNull
-    private Subject subject;
+    private int subjectId;
     @NonNull
-    private Group group;
+    private int groupId;
 }

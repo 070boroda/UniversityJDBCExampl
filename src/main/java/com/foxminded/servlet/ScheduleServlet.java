@@ -21,31 +21,34 @@ import com.foxminded.entity.Student;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@WebServlet("/ScheduleServlet")
+@WebServlet(name = "ScheduleServlet", urlPatterns = { "/ScheduleServlet" })
 public class ScheduleServlet extends HttpServlet {
 
     GroupDao groupdao = new GroupDao();
     SubjectDao subjectdao = new SubjectDao();
+    FieldDao fieldDao = new FieldDao();
+    GroupDao groupDao = new GroupDao();
+    SubjectDao subjectDao = new SubjectDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-
-        try {
-            switch (action == null ? "info" : action) {
-            case "new":
-                log.info("new servlet");
-                showNewForm(request, response);
-                break;
-            default:
-                log.info("show list from switch metod in servlet");
+        String action = (String) request.getParameter("action");
+        System.out.println(action);
+        switch (action == null ? "info" : action) {
+        case "new":
+            log.info("new servlet");
+            showNewForm(request, response);
+            break;
+        default:
+            log.info("show list from switch metod in servlet");
+            try {
                 showChooseList(request, response);
-                break;
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
         }
     }
 
@@ -58,28 +61,30 @@ public class ScheduleServlet extends HttpServlet {
         if ("choose".equals(action)) {
             String day = request.getParameter("day");
             Integer groupid = Integer.parseInt(request.getParameter("groupid"));
-            FieldDao fieldDao = new FieldDao();
-            GroupDao groupDao = new GroupDao();
-            SubjectDao subjectDao = new SubjectDao();
+
             try {
-                request.setAttribute("fieldlist", fieldDao.getAll());
+                request.setAttribute("fieldlist", fieldDao.getAllByDayAndGroup(day, groupid));
                 request.setAttribute("group", groupDao.getById(groupid));
                 request.setAttribute("subjectlist", subjectDao.getAll());
                 request.setAttribute("day", day);
             } catch (SQLException e) {
-                log.info("getAll" + getServletName());
+                log.info("getAllPost" + getServletName());
                 e.printStackTrace();
             }
 
             RequestDispatcher dispatcher = getServletContext()
                     .getRequestDispatcher("/WEB-INF/view/schedule/fieldmanager.jsp");
             dispatcher.forward(request, response);
+        } else if ("add".equals(action)) {
+
         }
     }
 
     private void showChooseList(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException, SQLException {
+
         request.setAttribute("grouplist", groupdao.getAll());
+
         request.setAttribute("enumdayslist", DayOfWeek.values());
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/schedule/choose.jsp");
         dispatcher.forward(request, response);
@@ -88,14 +93,15 @@ public class ScheduleServlet extends HttpServlet {
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("day", request.getAttribute("day"));
+        request.setAttribute("day", request.getParameter("day"));
+        request.setAttribute("group", request.getParameter("group"));
         try {
             request.setAttribute("grouplist", groupdao.getAll());
             request.setAttribute("subjectlist", subjectdao.getAll());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/schedule/choose.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/schedule/fieldadd.jsp");
         dispatcher.forward(request, response);
     }
 }

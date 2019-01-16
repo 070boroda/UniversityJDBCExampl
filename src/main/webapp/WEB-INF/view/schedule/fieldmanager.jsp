@@ -18,14 +18,18 @@
 				<th>Number Lesson</th>
 				<th>Subject</th>				
 			</tr>
-			<c:forEach var="group" items="${listgroup}">
+			<c:forEach var="field" items="${fieldlist}">
 				<tr>
-					<td><c:out value="${group.id}"></c:out>
-					<td><c:out value="${group.name}"></c:out>
+					<td><c:out value="${field.numberLesson}"></c:out>
+					<td> <c:forEach var="subject" items="${subjectlist}">
+					<c:if test="${subject.id eq field.subjectId}">
+					<c:out value="${subject.name}"></c:out>
+					</c:if> 
+					</c:forEach>     
 					<td><a
-						href="ServletGroup?action=edit&id=<c:out value='${group.id}' />">Edit</a>
+						href="ScheduleServlet?action=edit&id=<c:out value='${field.id}' />">Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="ServletGroup?action=delete&id=<c:out value='${group.id}' />">Delete</a>
+						href="ScheduleServlet?action=delete&id=<c:out value='${field.id}' />">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
