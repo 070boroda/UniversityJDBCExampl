@@ -19,6 +19,8 @@
 				<th>Subject</th>				
 			</tr>
 			<c:forEach var="field" items="${fieldlist}">
+			<input type="hidden" name="id"
+				value="<c:out value='${field.id}' />" />
 				<tr>
 					<td><c:out value="${field.numberLesson}"></c:out>
 					<td> <c:forEach var="subject" items="${subjectlist}">

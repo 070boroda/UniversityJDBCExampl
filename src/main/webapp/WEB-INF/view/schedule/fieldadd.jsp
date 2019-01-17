@@ -14,16 +14,16 @@
 
 		<form action="ScheduleServlet?action=add" method="post">
 		Day:
-		<c:out value='${day}'></c:out>
+		<input type= text name="day" value="<c:out value='${day}'/>" />
 		<br> Group:
-		<c:out value="${group}"></c:out>
+		<input type= text name="group" value="<c:out value='${group}'/>" />
 		<br> Number Lesson :
 		<select id="id" name="numberlesson">
 				<option selected></option>
-				<option value=numberlesson>1</option>
-				<option value=numberlesson>2</option>
-				<option value=numberlesson>3</option>
-				<option value=numberlesson>4</option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
 		</select><br> Subject:
 		<select id="id" name="subject">
 				<option selected></option>

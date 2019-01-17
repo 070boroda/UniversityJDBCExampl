@@ -31,7 +31,10 @@ public class FieldDao extends AbstractDao<Integer, Field> {
 
     @Override
     public void create(Field field) throws SQLException {
-        executor.execUpdate(SQL_CREATE, field.getNumberLesson(), field.getDayLesson(), field.getGroupId(), field.getSubjectId());
+        System.out.println(" " + field.getNumberLesson() + " " + field.getDayLesson() + " " + field.getGroupId() + " "
+                + field.getSubjectId());
+        executor.execUpdate(SQL_CREATE, field.getNumberLesson(), field.getDayLesson(), field.getGroupId(),
+                field.getSubjectId());
 
     }
 
@@ -40,8 +43,8 @@ public class FieldDao extends AbstractDao<Integer, Field> {
         return executor.execQuery(SQL_GET_ALL, result -> {
             List<Field> all = new ArrayList<>();
             while (result.next()) {
-                all.add(new Field(result.getInt("id"), result.getString("day_lesson"), result.getInt("number_lesson"),
-                        result.getInt("id_group"), result.getInt("id_subject")));
+                all.add(new Field(result.getInt("id"), result.getInt("number_lesson"), result.getString("day_lesson"),
+                        result.getInt("id_subject"), result.getInt("id_group")));
             }
             return all;
         });
@@ -65,8 +68,8 @@ public class FieldDao extends AbstractDao<Integer, Field> {
         return executor.execQuery(SQL_ALL_BY_DAY_AND_GROUP, result -> {
             List<Field> all = new ArrayList<>();
             while (result.next()) {
-                all.add(new Field(result.getInt("id"), result.getString("day_lesson"), result.getInt("number_lesson"),
-                        result.getInt("id_group"), result.getInt("id_subject")));
+                all.add(new Field(result.getInt("id"), result.getInt("number_lesson"), result.getString("day_lesson"),
+                        result.getInt("id_subject"), result.getInt("id_group")));
             }
             return all;
         }, group, day);
