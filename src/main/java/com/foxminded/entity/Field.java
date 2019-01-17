@@ -3,12 +3,9 @@ package com.foxminded.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class Field {
 
@@ -18,12 +15,16 @@ public class Field {
     }
 
     private int id;
-    @NonNull
-    private String dayLesson;
-    @NonNull
-    private int numberLesson;
-    @NonNull
-    private int subjectId;
-    @NonNull
+    private String dayLesson;   
+    private int numberLesson;    
+    private int subjectId;   
     private int groupId;
+    
+	public Field(int numberLesson, String dayLesson, int subjectId, int groupId) {
+		super();
+		this.dayLesson = dayLesson;
+		this.numberLesson = numberLesson;
+		this.subjectId = subjectId;
+		this.groupId = groupId;
+	}      
 }

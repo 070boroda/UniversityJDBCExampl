@@ -11,7 +11,7 @@
 	<div align="center"> 
 	 <h2>Schedule <c:out value="${day}"></c:out> group: 
 	              <c:out value="${group.name}"></c:out><br>
-	              <a href="ScheduleServlet?action=new&day=<c:out value='${day}'/>">Add One Field Lesson</a></h2>
+	              <a href="ScheduleServlet?action=new&group=<c:out value='${group}'/>&day=<c:out value='${day}'/>">Add One Field Lesson</a></h2>
 	              	              
 		<table border="1px">
 			<tr>

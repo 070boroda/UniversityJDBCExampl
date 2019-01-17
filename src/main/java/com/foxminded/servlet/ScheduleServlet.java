@@ -2,7 +2,6 @@ package com.foxminded.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +14,8 @@ import com.foxminded.dao.FieldDao;
 import com.foxminded.dao.GroupDao;
 import com.foxminded.dao.SubjectDao;
 import com.foxminded.entity.DayOfWeek;
-import com.foxminded.entity.NumberLesson;
-import com.foxminded.entity.Student;
-
+import com.foxminded.entity.Field;
+import com.foxminded.entity.Group;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -76,7 +74,16 @@ public class ScheduleServlet extends HttpServlet {
                     .getRequestDispatcher("/WEB-INF/view/schedule/fieldmanager.jsp");
             dispatcher.forward(request, response);
         } else if ("add".equals(action)) {
-
+        		String day = request.getParameter("day");
+        		Integer numberlesson = Integer.parseInt(request.getParameter("numberlesson"));
+				Integer subjectid = Integer.parseInt(request.getParameter("subject"));
+        		try {
+					Integer groupid = groupDao.getByName(request.getParameter("group")).getId();
+					fieldDao.create(new Field(numberlesson, day, groupid, subjectid));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+        		response.sendRedirect("ScheduleServlet&action=choose");
         }
     }
 

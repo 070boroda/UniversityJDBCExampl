@@ -10,23 +10,29 @@
 </head>
 <body>
 	<div align="center">
-	<h2>Add field of schedule <c:out value='${day}'></c:out></h2>
-							  <c:out value="${group.name}"></c:out>		
-	<form action="ScheduleServlet?action=add" method="post"></form>	
-	
-	        Number Lesson :<input type="text" name="numberLesson"
-			value="<c:out value='' />" /><br> 
-			Subject :<input type="text" name="subject"
-			value="<c:out value='' />" /><br>
-		        <td><select id="id" name="groupid">
-				    <option selected></option>
-				<c:forEach var="group" items="${grouplist}">
-					<option value="${group.id}">${group.name}</option>
-				</c:forEach>
-		            </select></td> <input type="submit" value="Submit">
-	
-	
-	</div>
+		<h2>Add field of schedule</h2>
 
+		<form action="ScheduleServlet?action=add" method="post">
+		Day:
+		<c:out value='${day}'></c:out>
+		<br> Group:
+		<c:out value="${group}"></c:out>
+		<br> Number Lesson :
+		<select id="id" name="numberlesson">
+				<option selected></option>
+				<option value=numberlesson>1</option>
+				<option value=numberlesson>2</option>
+				<option value=numberlesson>3</option>
+				<option value=numberlesson>4</option>
+		</select><br> Subject:
+		<select id="id" name="subject">
+				<option selected></option>
+				<c:forEach var="subject" items="${subjectlist}">
+					<option value="${subject.id}">${subject.name}</option>
+				</c:forEach>
+		</select><br>
+		<input type="submit" value="Submit">
+    </form>
+	</div>
 </body>
 </html>

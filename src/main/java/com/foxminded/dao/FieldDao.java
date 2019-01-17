@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class FieldDao extends AbstractDao<Integer, Field> {
-    private final static String SQL_CREATE = "INSERT INTO fields (id,name) VALUES (DEFAULT,?);";
+    private final static String SQL_CREATE = "INSERT INTO fields (id, number_lesson, day_lesson, id_group, id_subject) VALUES (DEFAULT,?,?,?,?);";
     private final static String SQL_DELETE = "DELETE FROM fields WHERE id=?;";
     private final static String SQL_UPDATE_NAME_BY_ID = "UPDATE fields SET name =? WHERE id =?;";
     private final static String SQL_GET_BY_ID = "SELECT * FROM fields WHERE id=?;";
@@ -31,7 +31,7 @@ public class FieldDao extends AbstractDao<Integer, Field> {
 
     @Override
     public void create(Field field) throws SQLException {
-        executor.execUpdate(SQL_CREATE, field.getDayLesson(), field.getNumberLesson());
+        executor.execUpdate(SQL_CREATE, field.getNumberLesson(), field.getDayLesson(), field.getGroupId(), field.getSubjectId());
 
     }
 
