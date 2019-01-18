@@ -22,16 +22,16 @@
 			<input type="hidden" name="id"
 				value="<c:out value='${student.id}' />" />
 		</c:if>
-		    First Name :<input type="text" name="firstname"
-			value="<c:out value='${student.firstName}' />" /><br> 
-			Second Name :<input type="text" name="secondname"
+		First Name :<input type="text" name="firstname"
+			value="<c:out value='${student.firstName}' />" /><br> Second
+		Name :<input type="text" name="secondname"
 			value="<c:out value='${student.secondName}' />" /><br>
-		        <td><select id="id" name="groupid">
-				    <option selected></option>
+		<td><select id="id" name="groupid">
+				<option selected></option>
 				<c:forEach var="group" items="${grouplist}">
 					<option value="${group.id}">${group.name}</option>
 				</c:forEach>
-		            </select></td> <input type="submit" value="Submit">
+		</select></td> <input type="submit" value="Submit">
 	</form>
 	</centre>
 </body>
