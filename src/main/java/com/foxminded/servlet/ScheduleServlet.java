@@ -23,10 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 @WebServlet(name = "ScheduleServlet", urlPatterns = { "/ScheduleServlet" })
 public class ScheduleServlet extends HttpServlet {
 
-    SubjectDao subjectdao = new SubjectDao();
-    FieldDao fieldDao = new FieldDao();
-    GroupDao groupDao = new GroupDao();
-    SubjectDao subjectDao = new SubjectDao();
+    private SubjectDao subjectdao = new SubjectDao();
+    private FieldDao fieldDao = new FieldDao();
+    private GroupDao groupDao = new GroupDao();
+    private SubjectDao subjectDao = new SubjectDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

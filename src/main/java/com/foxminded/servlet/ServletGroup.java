@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @WebServlet(name = "ServletGroup", urlPatterns = { "/ServletGroup" })
 public class ServletGroup extends HttpServlet {
-	GroupDao groupdao = new GroupDao();
+	private GroupDao groupdao = new GroupDao();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

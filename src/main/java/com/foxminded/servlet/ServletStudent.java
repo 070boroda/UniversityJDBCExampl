@@ -19,8 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @WebServlet(name = "ServletStudent", urlPatterns = { "/ServletStudent" })
 public class ServletStudent extends HttpServlet {
-    StudentDao studentdao = new StudentDao();
-    GroupDao groupdao = new GroupDao();
+    private StudentDao studentdao = new StudentDao();
+    private GroupDao groupdao = new GroupDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
