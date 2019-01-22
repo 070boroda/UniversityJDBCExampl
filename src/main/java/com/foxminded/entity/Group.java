@@ -1,21 +1,23 @@
 package com.foxminded.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Group {
-
+	
+	private int id;
     private String name;
-    private List<Student> students = new ArrayList<>();
+    
+    public Group(int id) {
+    	this.id = id;
+    }
 
     public Group(String name) {
         this.name = name;
-    }
-
-    protected void addStudent(Student student) {
-        students.add(student);
     }
 
     @Override

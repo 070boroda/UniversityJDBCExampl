@@ -2,24 +2,36 @@ package com.foxminded.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Field {
-    @NonNull
-    private Subject subject;
-    @NonNull
-    private Group groupNumber;
-    @NonNull
-    private Teacher teacher;
-    @NonNull
-    private LectureHall lectureHall;
 
-    @Override
-    public String toString() {
-        return " " + subject + " group: " + groupNumber + " teacher:  " + teacher + " in  " + lectureHall + " ";
+    public Field(int id) {
+        super();
+        this.id = id;
+    }
+
+    private int id;
+    private String dayLesson;
+    private int numberLesson;
+    private int subjectId;
+    private int groupId;
+
+    public Field(int numberLesson, String dayLesson, int subjectId, int groupId) {
+        super();
+        this.dayLesson = dayLesson;
+        this.numberLesson = numberLesson;
+        this.subjectId = subjectId;
+        this.groupId = groupId;
+    }
+
+    public Field(int id, int numberLesson, String dayLesson, int subjectId, int groupId) {
+        super();
+        this.id = id;
+        this.dayLesson = dayLesson;
+        this.numberLesson = numberLesson;
+        this.subjectId = subjectId;
+        this.groupId = groupId;
     }
 }

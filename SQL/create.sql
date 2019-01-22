@@ -1,19 +1,29 @@
-CREATE TABLE IF NOT EXISTS groups( 
-group_id int PRIMARY KEY,
-name varchar(10));
 
-CREATE TABLE IF NOT EXISTS students (
-student_id int PRIMARY KEY, 
-group_id int REFERENCES groups(group_id), 
+CREATE TABLE IF NOT EXISTS teachers (
+id SERIAL PRIMARY KEY,  
 first_name varchar(15), 
 last_name varchar(15));
 
-CREATE TABLE IF NOT EXISTS courses (
-course_id int PRIMARY KEY, 
-name varchar(10), 
-description varchar(10));
+CREATE TABLE IF NOT EXISTS groups (
+id SERIAL PRIMARY KEY,  
+name varchar(15));
 
-CREATE TABLE courses_students (
-student_id int REFERENCES students(student_id),
-course_id int REFERENCES  courses(course_id),
-PRIMARY KEY (student_id,course_id));
+CREATE TABLE IF NOT EXISTS subjects (
+id SERIAL PRIMARY KEY,  
+name varchar(15));
+
+CREATE TABLE IF NOT EXISTS students (
+id SERIAL PRIMARY KEY,  
+first_name varchar(15), 
+last_name varchar(15),
+id_group INT REFERENCES groups (id));
+
+CREATE TABLE IF NOT EXISTS fields (
+id SERIAL PRIMARY KEY,  
+number_lesson INT, 
+day_lesson varchar(15),
+id_group INT REFERENCES groups (id),
+id_subject INT REFERENCES subjects (id));
+
+
+

@@ -2,19 +2,32 @@ package com.foxminded.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Student {
-    @NonNull
+    
     private int id;
-    private String firstName;
+    private String firstName;    
     private String secondName;
+    private int idgroup;
+    
+    public Student() {
+		super();
+	}
+    
+	public Student(int id) {
+		super();
+		this.id = id;
+	}
 
-    @Override
+	public Student(String firstName, String secondName) {
+		super();
+		this.firstName = firstName;
+		this.secondName = secondName;
+	}
+
+	@Override
     public String toString() {
         return firstName + secondName;
     }
@@ -49,5 +62,21 @@ public class Student {
         result = prime * result + ((secondName == null) ? 0 : secondName.hashCode());
         return result;
     }
+
+	public Student(int id, String firstName, String secondName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.secondName = secondName;
+	}
+
+	public Student(String firstName, String secondName, int idgroup) {
+		super();
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.idgroup = idgroup;
+	}
+	
+	
 
 }
